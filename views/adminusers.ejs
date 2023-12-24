@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %> <%-
+  include("./partials/adminnavbar.ejs") %>
+
+  <body
+    style="
+      background-image: url('https://cdn2.vectorstock.com/i/1000x1000/19/76/polygonal-square-background-sky-blue-gradient-vector-21441976.jpg');
+      background-size: cover;
+    "
+  >
+    <div class="container">
+      <div
+        class="row bg-success text-light p-3 h5"
+        style="
+          background-image: url('https://media.istockphoto.com/vectors/dark-blue-gradient-background-modern-look-vector-id1174818917?k=20&m=1174818917&s=170667a&w=0&h=LJUGwwFqqUUrnc63IwQvCXGh1MwuhlqOKIJY1vxSW1s=');
+          background-size: cover;
+          height: 50px;
+        "
+      >
+        <div class="col">User ID</div>
+        <div class="col">User Name</div>
+        <div class="col">Email Address</div>
+        <div class="col">Mobile Number</div>
+      </div>
+
+      <% for(let user of users){ %>
+
+      <div class="row text-white p-3 h6">
+        <div class="col"><%= user._id %></div>
+        <div class="col"><%= user.username %></div>
+        <div class="col"><%= user.email %></div>
+        <div class="col"><%= user.mobile %></div>
+      </div>
+      <hr color="white" size="15" />
+      <% } %>
+    </div>
+  </body>
+</html>

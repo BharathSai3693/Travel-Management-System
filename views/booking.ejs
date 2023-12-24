@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %> <%- include("./partials/header.ejs") %>
+
+  <body
+    style="
+      background-image: url('https://cdn.wallpapersafari.com/47/46/RWFb2z.jpg');
+      background-size: cover;
+    "
+  >
+    <div class="container p-3">
+      <div class="row">
+        <div class="col">
+          <div class="card w-100" style="width: 25rem">
+            <img src="<%= p.packageImage %> " class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title"><%= p.packageName %></h5>
+              <p class="card-text">
+                <b>Package Type : </b> <%= p.packageType %>
+              </p>
+              <p class="card-text">
+                <b>Package Location : </b><%= p.packageLocation %>
+              </p>
+              <p class="card-text">
+                <b>Package Price : </b><%= p.packagePrice %>
+              </p>
+              <p class="card-text"><b>Number of Days : </b><%= p.days %></p>
+              <p class="card-text">
+                <b>Start Date : </b><%=
+                p.startDate.toUTCString().substring(0,16) %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col bg-info">
+          <h2 class="text-center text-light">Details</h2>
+          <form
+            name="detailsForm"
+            action="/booking/<%=p._id%>"
+            method="post"
+            id="bookpackage"
+            onsubmit="return Validate()"
+          >
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input
+                type="email"
+                name="bookingMail"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Mobile Number</label>
+              <input
+                type="tel"
+                name="bookingMobile"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Special Remarks</label>
+              <input
+                type="text"
+                name="bookingRemarks"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Number of Passengers</label>
+              <input
+                type="number"
+                name="passengers"
+                class="form-control"
+                required
+              />
+            </div>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-toggle="modal"
+              data-target="#exampleModal"
+            >
+              Book Package
+            </button>
+            <!-- <button type="submit" class="btn btn-primary">Book Package</button> -->
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <!-- modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Are you sure want to book this package?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+
+          <button type="button" onclick="bookpackage()" class="btn btn-primary">
+            Book Package
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- validation modals -->
+  <div class="modal fade" id="mobileError" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-danger">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="exampleModalLabel">
+            Phone number should start with 6,7,8,9 and of length 10
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="emailError" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-danger">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="exampleModalLabel">
+            Enter Valid Email
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function bookpackage() {
+      let x = document.forms["detailsForm"]["bookingMail"].value;
+      let y = document.forms["detailsForm"]["bookingMobile"].value;
+      let z = document.forms["detailsForm"]["bookingRemarks"].value;
+
+      var emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      var mobileRegex = /^[6789]\d{9}$/;
+      if (x == "" || y == "" || z == "") {
+        alert("Fill all the Details");
+      } else if (!emailRegex.test(x)) {
+        // alert("Email not in format");
+        $("#emailError").modal();
+      } else if (!mobileRegex.test(y)) {
+        $("#mobileError").modal();
+      } else {
+        document.getElementById("bookpackage").submit();
+      }
+    }
+
+    function Validate() {
+      return false;
+    }
+  </script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %>
+
+  <body
+    style="
+      background-image: url('https://cdn.wallpapersafari.com/47/46/RWFb2z.jpg');
+      background-size: cover;
+    "
+  >
+    <%- include('partials/header.ejs') %>
+
+    <div class="container p-4">
+      <div class="row">
+        <div class="col">
+          <img src="<%=p.packageImage%>" height="300px" width="550px" />
+        </div>
+        <div class="col">
+          <h1><%= p.packageName%></h1>
+
+          <div class="row">
+            <div class="col">
+              <h5>Package type : <%= p.packageType%></h5>
+            </div>
+            <div class="col">
+              <h5>Package Price : <%=p.packagePrice%></h5>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h5>Days : <%= p.days %></h5>
+            </div>
+            <div class="col">
+              <h5>Date : <%= p.startDate.toUTCString().substring(0, 16) %></h5>
+            </div>
+          </div>
+
+          <h5>Package Locations : <%=p.packageLocation%></h5>
+
+          <div class="row">
+            <% for(let f of p.packageFeatures){%>
+            <span class="badge badge-lg badge-primary m-2"> <%=f%> </span>
+            <%}%>
+          </div>
+
+          <div class="row my-3 w-100">
+            <form class="w-100" action="/booking/<%=p._id%>" method="get">
+              <input
+                class="w-100 btn btn-success"
+                type="submit"
+                value="Book Package"
+              />
+            </form>
+          </div>
+        </div>
+
+        <div class="p-4">
+          <h2>Details</h2>
+          <p><%=p.packageDetails%></p>
+        </div>
+      </div>
+    </div>
+
+    <script></script>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("partials/head.ejs") %> <%- include('partials/adminnavbar.ejs') %>
+  <body
+    style="
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9G5sBX4fAUaaxxnApSD8dez7S0AsjU6suUQ&usqp=CAU');
+      background-size: cover;
+    "
+    class="text-white"
+  >
+    <div class="container p-4">
+      <div class="row border border-info rounded p-3">
+        <div class="col">
+          <img src="<%=p.packageImage%>" height="300px" width="550px" />
+        </div>
+        <div class="col">
+          <h1><%= p.packageName%></h1>
+
+          <div class="row">
+            <div class="col">
+              <h5>Package type : <%= p.packageType%></h5>
+            </div>
+            <div class="col">
+              <h5>Package Price : <%=p.packagePrice%></h5>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <h5>Days : <%= p.days %></h5>
+            </div>
+            <div class="col">
+              <h5>Date : <%= p.startDate.toUTCString().substring(0, 16) %></h5>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-3 h5">Locations :</div>
+            <div class="col-9 h5"><%=p.packageLocation%></div>
+          </div>
+
+          <div class="row">
+            <% for(let f of p.packageFeatures){%>
+            <h3>
+              <span class="badge badge-lg badge-primary m-2"> <%=f%> </span>
+            </h3>
+            <%}%>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <form action="/packages/<%=p._id%>/edit" method="get">
+                <button class="btn btn-warning" type="submit">
+                  Edit Package
+                </button>
+              </form>
+            </div>
+            <div class="col">
+              <form action="/package/<%=p._id%>?_method=DELETE" method="post">
+                <button class="btn btn-danger" type="submit">
+                  Delete package
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-4 border border-info my-3 rounded">
+        <h2>Details</h2>
+        <p><%=p.packageDetails%></p>
+      </div>
+    </div>
+    <!-- <div class="container p-4">
+      <div class="row">
+        <div class="col-3 bg-danger">
+          <img src="<%=p.packageImage%>" height="200px" width="250px" />
+        </div>
+        <div class="col-9 bg-success">
+          <h1><%= p.packageName%></h1>
+          <h5>Package type : <%= p.packageType%></h5>
+          <h5>Package Locations : <%=p.packageLocation%></h5>
+          <h5>Package Price : <%=p.packagePrice%></h5>
+
+          <% for(let f of p.packageFeatures){%>
+          <span class="badge badge-primary"> <%=f%> </span>
+          <%}%>
+
+          <p><%=p.packageDetails%></p>
+        </div>
+      </div>
+    </div> -->
+  </body>
+</html>

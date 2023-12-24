@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %> <%-
+  include("./partials/headersignout.ejs") %>
+
+  <body>
+    <div class="container bg-info p-5 rounded box">
+      <H1 class="text-center text-orange mb-3">BOOK MY TRIP</H1>
+      <h3 class="text-center text-light">Log in to Book My Trip</h3>
+
+      <form
+        action="/login"
+        method="post"
+        class="bg-dark text-white p-5 rounded shadow-lg container"
+        style="width: 500px"
+        onsubmit="return Validate()"
+      >
+        <% if(loginerror.length == 1){ %>
+        <div class="alert alert-danger text-center h3 p-3" role="alert">
+          <%= loginerror %>
+        </div>
+        <% } %>
+        <div class="form-group">
+          <label class="text-light"><b>Email address</b></label>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            placeholder="Enter your E-mail Address"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="text-light"><b>Password</b></label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Enter Your Password"
+          />
+        </div>
+
+        <button type="submit" class="btn w-100 btn-success">Login</button>
+      </form>
+    </div>
+  </body>
+</html>

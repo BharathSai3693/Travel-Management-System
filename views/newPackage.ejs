@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %> <%- include('partials/adminnavbar.ejs') %>
+
+  <body>
+    <h1>Create New Package</h1>
+
+    <div class="container p-3 bg-primary">
+      <form action="/package/new" method="post" onsubmit="return Validate()">
+        <div class="form-group">
+          <label for="name">Package Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            aria-describedby="emailHelp"
+            placeholder="Enter Package Name"
+            name="packageName"
+          />
+        </div>
+        <div class="form-group">
+          <label for="type">Package Type</label>
+          <input
+            type="text"
+            class="form-control"
+            id="type"
+            placeholder="Enter Package Type"
+            name="packageType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Package Location</label>
+          <input
+            type="text"
+            class="form-control"
+            id="location"
+            name="packageLocation"
+            placeholder="Enter locations covered by package"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="price">Package Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            name="packagePrice"
+            placeholder="Enter Package Price"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="features">Package Features</label>
+          <input
+            type="text"
+            class="form-control"
+            id="features"
+            name="packageFeatures"
+            placeholder="Enter Package Features separetd by Commas"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="url">Package Image</label>
+          <input
+            type="text"
+            class="form-control"
+            id="url"
+            name="packageImage"
+            placeholder="Enter Package Image URL"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="url">Number of days</label>
+          <input
+            type="number"
+            class="form-control"
+            id="days"
+            name="days"
+            placeholder="Enter number of days "
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="url">Start Date </label>
+          <input
+            type="date"
+            class="form-control"
+            id="startdate"
+            name="startDate"
+            placeholder="Enter start date of the package"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="details">Package Details</label>
+          <textarea
+            class="form-control"
+            name="packageDetails"
+            id="details"
+            cols="20"
+            rows="10"
+            placeholder="Enter Package Description"
+          ></textarea>
+        </div>
+
+        <div class="tags bg-warning p-4">
+          <div class="row mb-1">
+            <div class="col-2">
+              <h6>Age</h6>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="8-15"
+                  name="tags"
+                />
+                <label class="form-check-label"> 8 - 15 Years </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="15-25"
+                  name="tags"
+                />
+                <label class="form-check-label"> 15 - 25 Years </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="25-35"
+                  name="tags"
+                />
+                <label class="form-check-label"> 25-35 years </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-2">
+              <h6>Density</h6>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="lessCrowd"
+                  name="tags"
+                />
+                <label class="form-check-label"> Less Crowded </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="moderateCrowd"
+                  name="tags"
+                />
+                <label class="form-check-label"> Moderate Crowded </label>
+              </div>
+            </div>
+            <div class="col mb-1">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="highCrowd"
+                  name="tags"
+                />
+                <label class="form-check-label"> Highly Crowded </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-2">
+              <h6>With</h6>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="friends"
+                  name="tags"
+                />
+                <label class="form-check-label"> Friends </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="family"
+                  name="tags"
+                />
+                <label class="form-check-label"> Family </label>
+              </div>
+            </div>
+            <div class="col mb-1">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="love"
+                  name="tags"
+                />
+                <label class="form-check-label"> Love </label>
+              </div>
+            </div>
+            <div class="col mb-1">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="solo"
+                  name="tags"
+                />
+                <label class="form-check-label"> Solo </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-1">
+            <div class="col-2">
+              <h6>Temperature</h6>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="hot"
+                  name="tags"
+                />
+                <label class="form-check-label"> Hot </label>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="moderate"
+                  name="tags"
+                />
+                <label class="form-check-label"> Moderate </label>
+              </div>
+            </div>
+            <div class="col mb-1">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="cold"
+                  name="tags"
+                />
+                <label class="form-check-label"> Cold </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+
+    <!-- <form action="/package/new" method="post">
+            <input type="text" name="packageName" placeholder="Package Name">
+            <br>
+            <input type="text" name="packageType" placeholder="Package Type">
+            <br>
+            <input type="text" name="packageLocation" placeholder="Package Location">
+            <br>
+            <input type="text" name="packagePrice" placeholder="Package Price">
+            <br>
+            <input type="text" name="packageFeatures" placeholder="Package Features">
+            <br>
+            <textarea name="packageDetails" placeholder="Package Details" id="" cols="30" rows="10"></textarea>
+            <br>
+            <input type="text" name="packageImage" placeholder="Package Image URL">
+            <br>
+            <input type="submit" value="Submit">
+        </form> -->
+  </body>
+
+  <script>
+     function Validate() {
+        var name = document.getElementById("name").value;
+        var type = document.getElementById("type").value;
+        var location = document.getElementById("location").value;
+        var price = document.getElementById("price").value;
+        var features = document.getElementById("features").value;
+        var url = document.getElementById("url").value;
+        var days = document.getElementById("days").value;
+        var date = document.getElementById("startdate").value;
+        var details = document.getElementById("details").value;
+
+        //date validation
+        var currDate = new Date();
+        var packdate = new Date(date);
+
+        if (currDate > packdate) {
+          alert("You Can't Select start Date from Past");
+          return false;
+        }
+
+        console.log("success");
+        return true;
+      }
+    </script>
+  </script>
+</html>

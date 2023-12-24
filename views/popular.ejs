@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %> <%- include("./partials/header.ejs") %>
+  <body
+    style="
+      background-image: url('https://wallpaperaccess.com/full/1567665.png');
+      background-size: cover;
+    "
+  >
+    <div class="container">
+      <h1 class="text-white text-center">Most Frequent Packages</h1>
+      <% for (let p of packages){ %>
+      <div class="row my-3">
+        <div class="col-4">
+          <img
+            src="<%=p.packageImage %>"
+            height="150"
+            width="270"
+            alt=""
+            class="w-100 h-100"
+          />
+        </div>
+        <div class="col bg-info p-2">
+          <p>
+            <b class="display-4"><%=p.packageName%></b> - <%=p.bookings %>
+            Bookings
+          </p>
+
+          <div class="row">
+            <div class="col">
+              Type :
+              <h5><%= p.packageType %></h5>
+            </div>
+            <div class="col">
+              Days :
+              <h5><%= p.days %></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              Price :
+              <h5><%= p.packagePrice %></h5>
+            </div>
+            <div class="col">
+              <a href="/userpackages/<%= p._id %>">
+                <button class="btn btn-lg bg-primary text-white my-3">
+                  Open Package
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- <div class="container">
+      <div class="row bg-info p-3 text-white h4">
+        <div class="col">Package Name</div>
+        <div class="col">package Type</div>
+        <div class="col">Package Days</div>
+        <div class="col">Package Price</div>
+
+        <div class="col">Bookings</div>
+      </div>
+
+      <% for(let p of packages){ %>
+      <div class="row bg-dark p-3 text-white">
+        <div class="col">
+          <a class="text-white h5" href="/packages/<%=p._i%> ">
+            <u> <%=p.packageName%></u></a
+          >
+        </div>
+        <div class="col"><%=p.packageType%></div>
+        <div class="col"><%=p.days%></div>
+        <div class="col"><%=p.packagePrice%></div>
+        <div class="col"><%=p.bookings%></div>
+      </div>
+
+      <% } %>
+    </div> -->
+  </body>
+</html>

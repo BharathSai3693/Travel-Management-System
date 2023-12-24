@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %>
+
+  <body class="p-3">
+    <div class="container p-4 bg-info">
+      <h1 class="text-center text-light">ADMIN REGISTARTION FORM</h1>
+
+      <form onsubmit="return Validate()" action="/adminregister" method="post">
+        <div class="form-group">
+          <label class="text-light"><b>Name</b></label>
+          <input
+            type="text"
+            class="form-control"
+            name="username"
+            id="username"
+            placeholder="Enter your Name"
+          />
+        </div>
+        <div class="form-group">
+          <label class="text-light"><b>Email address</b></label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            name="email"
+            placeholder="Enter your E-mail Address"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="text-light"><b>Password</b></label>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            id="password"
+            placeholder="Enter Your Password"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="text-light"><b>Password</b></label>
+          <input
+            type="password"
+            class="form-control"
+            name="Cpassword"
+            id="Cpassword"
+            placeholder="Confirm Your Password"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="text-light"><b>Mobile Number</b></label>
+          <input
+            type="tel"
+            class="form-control"
+            id="mobile"
+            name="mobile"
+            placeholder="Enter Mobile Number"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    <script>
+      function Validate() {
+        var name = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var Cpassword = document.getElementById("Cpassword").value;
+        var mobile = document.getElementById("mobile").value;
+        // var dob = document.getElementById("dob").value;
+
+        console.log(name);
+        console.log(email);
+        console.log(password);
+        console.log(Cpassword);
+        console.log(mobile);
+
+        var nameRegex = /^[a-zA-Z\s]+$/;
+        if (!nameRegex.test(name)) {
+          alert("Only Alphabets and space are allowed");
+          return false;
+        }
+
+        if (password.localeCompare(Cpassword) != 0) {
+          alert("Passwords match avvaali babu");
+          return false;
+        }
+
+        if (password.length < 6 || password.length > 15) {
+          alert(
+            "password length should be minimum 6 and maximum 15 characters long."
+          );
+          return false;
+        }
+
+        var mobileRegex = /^[6789]\d{9}$/;
+        if (!mobileRegex.test(mobile)) {
+          alert(
+            "mobile number should start with 6,7,8,9 and be of 10 numbers length."
+          );
+          return false;
+        }
+
+        console.log("success");
+        return true;
+      }
+    </script>
+  </body>
+</html>

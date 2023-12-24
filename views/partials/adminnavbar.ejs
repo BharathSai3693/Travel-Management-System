@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-warning bg-dark">
+  <a class="navbar-brand" href="#">
+    <img
+      src="https://assets.materialup.com/uploads/452fb4cb-d3cd-404e-bfe5-6015b92902d9/preview.jpg"
+      alt="LOGO"
+      height="30"
+      width="35"
+    />
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/dashboard">Dashboard </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/adminpackages">Packages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/adminusers">Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/adminbookings">Bookings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/adminenquiries">Enquiries</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/adminreports">Reports</a>
+      </li>
+    </ul>
+
+    <p
+      class="form-inline my-2 my-lg-0 text-white h5 mx-2"
+      style="
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+          sans-serif;
+      "
+    >
+      Welcome : <%= name %> |
+    </p>
+    <form class="form-inline my-2 my-lg-0" action="/adminlogout" method="post">
+      <button type="submit" class="btn bg-light my-2 my-sm-0" type="submit">
+        Log Out
+      </button>
+    </form>
+  </div>
+</nav>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %> <%-
+  include("./partials/adminnavbar.ejs") %>
+
+  <body
+    style="
+      background-image: url('https://image.shutterstock.com/image-illustration/abstract-smooth-dark-blue-black-260nw-556465648.jpg');
+      background-size: cover;
+    "
+  >
+    <div class="container">
+      <h3 class="text-center h1 text-white my-3">Enquiries</h3>
+      <div
+        class="row bg-warning p-3 text-white h4 text-center"
+        style="
+          background-image: url('https://media.istockphoto.com/vectors/dark-blue-gradient-background-modern-look-vector-id1174818917?k=20&m=1174818917&s=170667a&w=0&h=LJUGwwFqqUUrnc63IwQvCXGh1MwuhlqOKIJY1vxSW1s=');
+          background-size: cover;
+          height: 50px;
+        "
+      >
+        <div class="col-3 border-right">Username</div>
+        <div class="col-2 border-right">Category</div>
+        <div class="col-2 border-right">Description</div>
+        <div class="col-2 border-right">Status</div>
+        <div class="col-3 text-center">Action</div>
+      </div>
+
+      <% for (let e of enquiries) {%>
+      <div class="row p-2 text-white h5 text-center">
+        <div class="col-3"><%= e.userId %></div>
+        <div class="col-2"><%= e.category %></div>
+        <div class="col-2"><%= e.description %></div>
+        <% var stat = "";var color = "" %> <% if(e.status == 0) {stat =
+        "pending";color = "text-warning" } %> <% if(e.status == 1) {stat =
+        "confirmed";color = "text-success" } %> <% if(e.status == -1) {stat =
+        "rejected";color = "text-danger" } %>
+        <div class="col-2 <%=color%>"><%= stat %></div>
+        <div class="col-3">
+          <div class="row">
+            <div class="col">
+              <form action="/enquiry/accept/<%=e._id%>" method="post">
+                <button class="btn btn-success">Accept</button>
+              </form>
+            </div>
+            <div class="col">
+              <form action="/enquiry/reject/<%=e._id%>" method="post">
+                <button class="btn btn-danger">Reject</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr color="white" size="10" />
+      <% } %>
+    </div>
+  </body>
+</html>

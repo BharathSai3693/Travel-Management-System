@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %> <%-
+  include("./partials/headersignout.ejs") %>
+
+  <body>
+    <div class="container bg-info p-4 rounded box">
+      <h1 class="text-center text-orange mb-3">BOOK MY TRIP</h1>
+      <h3 class="text-center text-light">Sign Up in Book My Trip</h3>
+
+      <form
+        class="bg-dark text-white p-5 rounded shadow-lg container"
+        style="width: 500px"
+        action="/register"
+        method="post"
+        onsubmit="return Validate()"
+      >
+        <div class="form-group">
+          <label> <b> Username </b></label>
+          <input
+            required
+            class="form-control"
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter Name"
+          />
+        </div>
+        <div class="form-group">
+          <label><b>Email address</b></label>
+          <input
+            required
+            class="form-control"
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter Email Address"
+          />
+        </div>
+
+        <div class="form-group">
+          <label><b>Password</b></label>
+          <input
+            required
+            class="form-control"
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+
+        <div class="form-group">
+          <label><b>Confirm Password</b></label>
+          <input
+            required
+            class="form-control"
+            type="password"
+            id="confirmpassword"
+            name="confirmpassword"
+            placeholder="Confirm Password"
+          />
+        </div>
+
+        <div class="form-group">
+          <label><b>Mobile</b></label>
+          <input
+            required
+            class="form-control"
+            type="tel"
+            id="mobile"
+            name="mobile"
+            placeholder="Enter Mobile Number"
+          />
+        </div>
+
+        <div class="form-group">
+          <label><b>DOB</b></label>
+          <% var curr = new Date(); curr = curr.toISOString(); %>
+          <input
+            required
+            class="form-control"
+            id="dob"
+            type="date"
+            max="<%= curr.substring(0,10)  %>"
+            name="dob"
+          />
+        </div>
+
+        <button type="submit" class="btn w-100 btn-success">Sign Up</button>
+      </form>
+    </div>
+  </body>
+
+  <div class="modal fade" id="usernameError" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="exampleModalLabel">
+            Only Alphabets and space are allowed for Username.
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="passwordMatchingError"
+    role="dialog"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="exampleModalLabel">
+            Passwords not matching.
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal fade"
+    id="passwordLengthError"
+    role="dialog"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="exampleModalLabel">
+            Password length should be minimum 6 and maximum 15 characters long.
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="mobileError" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title text-danger" id="exampleModalLabel">
+            mobile number should start with 6,7,8,9 and be of 10 numbers length.
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function Validate() {
+      var name = document.getElementById("username").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var Cpassword = document.getElementById("confirmpassword").value;
+      var mobile = document.getElementById("mobile").value;
+      var dob = document.getElementById("dob").value;
+
+      var nameRegex = /^[a-zA-Z\s]+$/;
+      if (!nameRegex.test(name)) {
+        // alert("Only Alphabets and space are allowed");
+        $("#usernameError").modal();
+
+        return false;
+      }
+
+      if (password.localeCompare(Cpassword) != 0) {
+        // alert("Passwords match avvaali babu");
+        $("#passwordMatchingError").modal();
+        return false;
+      }
+
+      if (password.length < 6 || password.length > 15) {
+        // alert(
+        //   "password length should be minimum 6 and maximum 15 characters long."
+        // );
+        $("#passwordLengthError").modal();
+        return false;
+      }
+
+      var mobileRegex = /^[6789]\d{9}$/;
+      if (!mobileRegex.test(mobile)) {
+        // alert(
+        //   "mobile number should start with 6,7,8,9 and be of 10 numbers length."
+        // );
+        $("#mobileError").modal();
+        return false;
+      }
+
+      //date validation
+      // var currDate = new Date();
+      // var dobDate = new Date(dob);
+      // console.log(currDate);
+      // console.log(dobDate);
+
+      // if (currDate < dobDate) {
+      //   alert("Invalid Date Of Birth");
+      //   return false;
+      // }
+
+      console.log("success");
+      return true;
+    }
+  </script>
+</html>

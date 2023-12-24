@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %> <%- include('./partials/header.ejs') %>
+
+  <body
+    style="
+      background-image: url('https://cdn.wallpapersafari.com/47/46/RWFb2z.jpg');
+      background-size: cover;
+    "
+  >
+    <div class="container p-3">
+      <h1 class="text-center text-info">Packages</h1>
+      <button
+        type="button"
+        class="mx-3 btn btn-lg btn-primary float-left"
+        data-toggle="modal"
+        data-target="#exampleModal"
+      >
+        Set preferences
+      </button>
+    </div>
+
+    <!--  if(messages.length != 0){ %>
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">< messages </h4>
+    </div>
+     -->
+
+    <div class="container p-5">
+      <%for( let p of packages){ %>
+      <div
+        class="row mb-4 p-2 border border-5 border-warning rounded shadow-lg"
+        style="
+          background-image: url('data:image/jpeg;base64,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');
+          background-size: cover;
+        "
+      >
+        <div class="col-4 p-3 leftcol">
+          <img
+            class="picture"
+            src="<%=p.packageImage%>"
+            height="170px"
+            width="260px"
+            alt=""
+          />
+        </div>
+        <div class="col-8 p-3 rightcol">
+          <h3 class="text-info"><%= p.packageName%></h3>
+          <div class="row">
+            <div class="col">
+              <h5>Type : <%= p.packageType %></h5>
+            </div>
+            <div class="col">
+              <h5>Price : <%= p.packagePrice %>/-<small>per person</small></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5>Days : <%= p.days %></h5>
+            </div>
+            <div class="col">
+              <h5>Date : <%= p.startDate.toISOString().substring(0, 10); %></h5>
+            </div>
+          </div>
+
+          <h5>Locations : <%= p.packageLocation %></h5>
+          <h5>
+            <div class="row">
+              <% for(let f of p.packageFeatures){ %>
+
+              <div class="col btn btn-sm m-2 btn-info"><%= f %></div>
+
+              <% } %>
+            </div>
+          </h5>
+
+          <form action="/userpackages/<%=p._id%>" method="get">
+            <button class="btn btn-success" type="submit">Open Package</button>
+          </form>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </body>
+
+  <%- include('partials/preferences.ejs') %>
+  <script>
+    var tags = "<%= tags%>";
+    tags = tags.split(",");
+    const docs = document.getElementsByClassName("form-check-input");
+    for (let d of docs) {
+      if (tags.includes(d.value)) {
+        d.checked = true;
+      }
+    }
+
+    var left = document.getElementsByClassName("picture");
+    var right = document.getElementsByClassName("rightcol");
+    var width = document.getElementsByClassName("leftcol");
+    for (var i = 0; i < left.length; i++) {
+      console.log(width[i]);
+      left[i].style.height = `${right[i].offsetHeight - 25}px`;
+      left[i].style.width = `${width[i].offsetWidth - 25}px`;
+    }
+  </script>
+</html>

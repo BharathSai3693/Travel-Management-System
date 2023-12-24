@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %> <%- include('partials/adminnavbar.ejs') %>
+  <body
+    style="
+      background-image: url('data:image/jpeg;base64,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');
+      background-size: cover;
+    "
+  >
+    <!-- <form action="/adminlogout" method="post">
+      <input type="submit" value="Logout" />
+    </form> -->
+
+    <h1 class="text-center">All Packages List</h1>
+
+    <div class="container p-3">
+      <% if(messages.length == 1){ %>
+      <div class="alert alert-success text-center h3" role="alert">
+        <%= messages %>
+      </div>
+      <% } %> <% for (let p of packages){ %>
+      <div
+        class="row mb-4 p-2 border border-5 border-warning rounded shadow-lg"
+        style="
+          background-image: url('https://i.pinimg.com/originals/79/26/30/792630d0ffeee67dda34f51c6a2546f3.jpg');
+          background-size: cover;
+        "
+      >
+        <div class="col-4 p-3 leftcol">
+          <img
+            class="picture"
+            src="<%=p.packageImage%>"
+            height="170px"
+            width="260px"
+            alt=""
+          />
+        </div>
+        <div class="col-8 p-3 rightcol">
+          <h3 class="text-dark"><%= p.packageName%></h3>
+          <div class="row">
+            <div class="col">
+              <h5>Type : <%= p.packageType %></h5>
+            </div>
+            <div class="col">
+              <h5>Price : <%= p.packagePrice %>/-<small>per person</small></h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h5>Days : <%= p.days %></h5>
+            </div>
+            <div class="col">
+              <h5>Date : <%= p.startDate.toISOString().substring(0, 10); %></h5>
+            </div>
+          </div>
+
+          <h5>
+            <div class="row">
+              <div class="col">Features :</div>
+
+              <% for(let f of p.packageFeatures){ %>
+
+              <div class="col badge badge-dark mx-3 text-white"><%= f %></div>
+
+              <% } %>
+            </div>
+          </h5>
+          <div class="row mt-4">
+            <div class="col">
+              <form action="/packages/<%=p._id%>" method="get">
+                <button class="btn btn-success" type="submit">
+                  Open Package
+                </button>
+              </form>
+            </div>
+            <div class="col">
+              <form action="/packages/<%=p._id%>/edit" method="get">
+                <button class="btn btn-warning" type="submit">
+                  Edit Package
+                </button>
+              </form>
+            </div>
+            <div class="col">
+              <form action="/package/<%=p._id%>?_method=DELETE" method="post">
+                <button class="btn btn-danger" type="submit">
+                  Delete package
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- <div class="container bg-info">
+      <%for( let p of packages){ %>
+      <div class="row mb-2 p-2">
+        <div class="col-4 p-2 leftcol">
+          <img class="picture" src="<%=p.packageImage%>" width="160px" alt="" />
+        </div>
+        <div class="col-8 bg-warning p-3 rightcol">
+          <h3><%= p.packageName%></h3>
+
+          <p><%= p.packageDetails%></p>
+
+          <div class="row">
+            <div class="col">
+              <form action="/packages/<%=p._id%>" method="get">
+                <input type="submit" value="Open Package" />
+              </form>
+            </div>
+            <div class="col">
+              <form action="/packages/<%=p._id%>/edit" method="get">
+                <input type="submit" value="Edit Package Details" />
+              </form>
+            </div>
+            <div class="col">
+              <form action="/package/<%=p._id%>?_method=DELETE" method="post">
+                <input class="bg-danger" type="submit" value="Delete Package" />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div> -->
+
+    <script>
+      var left = document.getElementsByClassName("picture");
+      var right = document.getElementsByClassName("rightcol");
+      var width = document.getElementsByClassName("leftcol");
+      for (var i = 0; i < left.length; i++) {
+        console.log(width[i]);
+        left[i].style.height = `${right[i].offsetHeight - 15}px`;
+        left[i].style.width = `${width[i].offsetWidth - 15}px`;
+      }
+    </script>
+  </body>
+</html>

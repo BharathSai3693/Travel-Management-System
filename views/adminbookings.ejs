@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %> <%-
+  include("./partials/adminnavbar.ejs") %>
+  <body
+    style="
+      background-image: url('https://image.shutterstock.com/image-illustration/abstract-smooth-dark-blue-black-260nw-556465648.jpg');
+      background-size: cover;
+    "
+  >
+    <div
+      class="row p-3 text-white h5"
+      style="
+        background-image: url('https://media.istockphoto.com/vectors/dark-blue-gradient-background-modern-look-vector-id1174818917?k=20&m=1174818917&s=170667a&w=0&h=LJUGwwFqqUUrnc63IwQvCXGh1MwuhlqOKIJY1vxSW1s=');
+        background-size: cover;
+      "
+    >
+      <div class="col-2 text-center border-right">Booking Id</div>
+      <div class="col-1 text-center border-right">package Name</div>
+      <div class="col-1 text-center border-right">User Name</div>
+      <div class="col-2 text-center border-right">Email ID</div>
+      <div class="col-1 text-center border-right">Mobile</div>
+      <div class="col-2 text-center border-right">Remarks</div>
+      <div class="col-1 text-center border-right">Status</div>
+      <div class="col-2 text-center">Action</div>
+    </div>
+
+    <%for(const [index,b] of bookings.entries()){%>
+    <div class="row p-2 text-white h6">
+      <div class="col-2 text-break text-center"><%=b._id%></div>
+      <div class="col-1 text-break text-center">
+        <%= packages[index].packageName %>
+      </div>
+      <div class="col-1 text-break text-center">
+        <%= users[index].username %>
+      </div>
+      <div class="col-2 text-break text-center"><%= b.bookingMail %></div>
+      <div class="col-1 text-break text-center"><%= b.bookingMobile %></div>
+      <div class="col-2 text-break text-center"><%= b.bookingRemarks %></div>
+      <% var stat = "" %> <% if(b.status == 0) {stat = "pending" } %> <%
+      if(b.status == 1) {stat = "confirmed" } %> <% if(b.status == -1) {stat =
+      "rejected" } %>
+
+      <div class="col-1 text-break text-center"><%= stat%></div>
+      <div class="col-2">
+        <div class="row">
+          <div class="col">
+            <form action="/booking/accept/<%=b._id%>" method="post">
+              <button class="btn btn-success">Accept</button>
+            </form>
+          </div>
+          <div class="col">
+            <form action="/booking/reject/<%= b._id%>" method="post">
+              <button class="btn btn-danger">Reject</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr color="white" size="10" />
+    <%}%>
+  </body>
+</html>

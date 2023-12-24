@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %> <%-
+  include("./partials/adminnavbar.ejs") %>
+
+  <body
+    style="
+      background-image: url('https://coolbackgrounds.io/images/backgrounds/index/ranger-4df6c1b6.png');
+      background-size: cover;
+    "
+  >
+    <div class="container bg-white rounded my-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Package Name</th>
+            <th scope="col">Package Type</th>
+            <th scope="col">Days</th>
+            <th scope="col">Price per person</th>
+            <th scope="col">Bookings</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let p of packages){ %>
+          <tr>
+            <!-- <th scope="row">1</th> -->
+            <td>
+              <a href="/packages/<%=p._id%>"> <%=p.packageName%></a>
+            </td>
+            <td><%=p.packageType%></td>
+            <td><%=p.days%></td>
+            <td><%=p.packagePrice%></td>
+            <td><%=p.bookings%></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+
+      <!-- <div class="row p-3 h4 rounded border">
+        <div class="col">Package Name</div>
+        <div class="col">package Type</div>
+        <div class="col">Package Days</div>
+        <div class="col">Package Price</div>
+
+        <div class="col">Bookings</div>
+      </div>
+
+      <% for(let p of packages){ %>
+      <div class="row bg-dark p-3 text-white">
+        <div class="col">
+          <a class="text-white h5" href="/packages/<%=p._i%> ">
+            <u> <%=p.packageName%></u></a
+          >
+        </div>
+        <div class="col"></div>
+        <div class="col"><%=p.days%></div>
+        <div class="col"><%=p.packagePrice%></div>
+        <div class="col"><%=p.bookings%></div>
+      </div> -->
+
+      <!-- <% } %> -->
+    </div>
+  </body>
+</html>

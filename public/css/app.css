@@ -1,0 +1,37 @@
+#dashboarditems {
+  height: 70px;
+}
+
+.yellow-grad {
+  background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NBwcNDQ0NDQ0HBw0HBw0NDQ8NDQcNFREWFhURExMYHSggGBoxGxUfITEhJSk3Li4uFx8zODMsNygtLisBCgoKDQ0NDg0PDzcZFRkrKysrLSsrKys3KysrLSsrKysrKy0rNysrKysrKysrKysrKy0rKysrKysrKysrKysrK//AABEIALEBHAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAABAAIFBv/EABgQAQEBAQEAAAAAAAAAAAAAAAARAUEx/8QAGQEBAQEBAQEAAAAAAAAAAAAAAQAEAwIG/8QAFhEBAQEAAAAAAAAAAAAAAAAAABEB/9oADAMBAAIRAxEAPwD3lFCr4t9FCBRUTRQKVGqBUjEhRSYRQqoYaBQTGqKBUShRUYaKElCBVSYRRRUYRQqYYQKKjGqKBSYaFRUYaKFUjQKKjHVoCcmOGiiioxoUCmGGgVVGGihExIUVGGqihKGhUVGEUUUmNUUBGGhUUqEbooJhqFFRhVARNCoqMNFFFJjVFZo1GNUUKlR1KhRXFkhVZqKhoFVRIoCMNVAqMKoopMNFFSSqAphhVZqRhooVJiQoRhqooqMKrNVJhoooqUaorKqMNARMNAoqMaooBMdUUVVxY4aAqjCBRSoaqzUjDRQqYYQKEYaKFSYQKKjGqKBUYUKKVDRRRUY1RWakYamaiYaBVUYRRQYoahRU9QqsoqGgVVF1aKKK4scNFCMMIG6KjGqKATDUKKjCKEkaBRUYaqzVSYaKKETVRQTCqBUoUzUYYd0UUVGFUAmGqiiqEiiioxqiiiow0UVFR1RRQ5McaoFFRhVARhoVFRhFFFJjVFZoqMaooFKhQFRhQophhooVRhFFCMaooFMJVZqqJooFSjVFZqpMNAVRIFFMMaoooUMdWqiiuLHCqzVSYaKKKlDRQqiaAiYQKKjGhQKTDQN1VGGihUwxIUVI1Vmqow0CgmGqiiolM0VRRqiigx6hVFFJhVZqqRooVRjq0UUVxY4aFQTDRRVUYRQDFDUKKnqFVlFQ0CiotCiiow0UUVGNUUUUmGqiipGiigww1UCkwpmiotUboSMNAqpMIooqMaorNSTqqs1OUY4aKKKjGhRQjDQqKSRRRUY1RRRUYaKEVDQKKi0KzVTDDRQkYaBRuktUVmpGGgJGEUUUqNUUBE1AVGFUUVGGqs1UmOpuqgVyjGVWaqjDRRRUo1RWaqTDRRVUSKKKYYaqylDDQKKTGhRQiaKElCBVukwiipE0UCoxqgUVKGqiikwqs0Ixqiiip6hVZRTq0UUVxY4aqBSSqzRVFGqKKDHqEVUUmFVmipNUUBGGhUUmFM1ImihJGgVVGEUCkw1Vmqow0UUVGNCs1EmihVEgUJNUUCkx1tCTixLQkiEk9EYN6kiuM6kjiSRIGpIrQkkNSSI1JIjUkSNZSRQ1JEAolDfEkkykUlqSODEknp//2Q==");
+  background-size: cover;
+}
+
+.green-grad {
+  background-image: url("https://wallpaperaccess.com/full/1092611.jpg");
+  background-size: cover;
+}
+
+.dashboarditems {
+  background-image: url("https://t4.ftcdn.net/jpg/01/47/39/69/360_F_147396946_DEH26IJr8Sd0nabEMhjaAPF6XJxQQAFT.jpg");
+  background-size: cover;
+}
+
+.bg-1 {
+  background-color: #3391bd;
+}
+
+.bg-5 {
+  background-color: #de4563;
+}
+
+.bg-orange {
+  background-color: #eda03b;
+}
+.text-orange {
+  color: #eda03b;
+}
+
+.box {
+  width: 850px;
+}

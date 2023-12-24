@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %> <%- include("./partials/header.ejs") %>
+  <body
+    style="
+      background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw8PEhUPDw8VFRUVFRUVFRUVFxcVFRUVFRUdFhUVFRUYHSggGB0lHRUXITEhJSktLi4uFx8zODMtNygtLisBCgoKDQ0NDg0NDi0ZFRkrKystLSs3Ny0rKy0rKystKy0rKy0rLS0rNy0tLSsrLS0tKysrKzctKy0rKy0rKystK//AABEIALEBHAMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAACAAEDB//EABkQAQEBAAMAAAAAAAAAAAAAAAABEQKh8P/EABcBAQEBAQAAAAAAAAAAAAAAAAABBAL/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDyuFBhRsZShwYUVChQYcVChQYcVChQYUHJwoMKKhSFBhRQo2RkKCLGpuKjGWFWVAaNKsFCjSo1FGhTo0UKNKjUUKNOhUUKNKjRQo06FRRrG1gqhQYUA4UCHBChwIcVC4lBhxUKFBhQcnCgwoqHCgQoqFCgwoITRaoqyttGgyjSFFYFKjUUaNKjRQo0qNRRoUqNRQo0qNFGhSo1FGsbWCqFBhRAoUGFFQ4UCHFQ4UCFBHSFAhRUOFBjZVR0jYEKCHGwZW6qGhbojbWVmoFRbo6Kwa2jUVlGlaFFZQpUaijRraNRRo0qFFGjSo1FGsbRRVCgwoBQoMKKhwpQhRUOFAlKUR0lLQhRUOFA0oIcpQI2VUOVsoStgHq0dWqh2stHVqDdZrNYKtG1o2iso1tGoMtGto2isoWlQqKyhStGoo0aVGijWNrEVRoxoHCgFFQ4UoQpQOFAhRUOUpQhaI6NlCVsqo6StlCVsojpKtCVsqhrR1aIVq0dWg1ms1mirWLRtQVo1to0VlGttG1FZRraNFZRrbRqKyjW0aKysraKCIY0UoUDSiocpQI2UR0jZQhQR0lbAlbqo6a3QbKDpK2UJWyqhytlCVugWt0NWiHazR1aBazR1aKtZrNZaDbRtVG1FVZarRoqtHVRRUOto0GVlVZUVlZUwVNFoG2UWwQoUCFKocrZQhSiHK3Q1uiOmt0NbKo6a2Vz1sohytlCVugerQ1aoes0dWgWs0dWoN1ms1mgrWWrRtFbaNqtGoKsWjoqrKtEVMqtYisqTATWJAmwWqFGwdbBDlbKEbKocbo63RD1oa3QPW6GtlVDlWhrdA9Whq0D1Whq0C1ms1mg3Vo6zUG6y1lrNFbay1lZQVYtFFbopgJiZRVUkCSSCaxKE2C2AUbBiEPW6DQPW6Gt1Q9Wjq0Q5Vo6tA9WhrdAtWhq0C1aOrQbrNZrNBurR1Wiq1lqtZagmJgqYkDEkCSSCSQJJAmsSjWjK0CaKAm6OoQ9Wjq0D1aOrQLUOrVC1aOrQJms1ag3WMWg3WM1ArUxgrWJgJJIJJAkkCSQJJAkkCSQNTEoS0Wg1sFAWrWagJaKAtZrNQNWsQN1jEDdZqYDVWIEkkEkgSSBKpAlUlEkgUSQJqQMSQJqQMbEgUVSBJqBMSBKJAypIEkkGNYlGsSQUbElGL3aSCXJIH//2Q==');
+      background-size: cover;
+    "
+  >
+    <div class="bookings container my-5">
+      <div class="row p-3 rounded yellow-grad">
+        <div class="col-2 h5 text-light">Package Name</div>
+        <div class="col-2 h5 text-light">Booking ID</div>
+        <div class="col-2 h5 text-light">Date</div>
+        <div class="col-3 h5 text-light">Email</div>
+        <div class="col-3 h5 text-light">status</div>
+      </div>
+
+      <% for(let [index,b] of bookings.entries()) {%>
+      <div class="row">
+        <div class="col-2 text-break text-white h4">
+          <%=packages[index].packageName%>
+        </div>
+        <div class="col-2 text-break text-white"><%=b._id%></div>
+        <div class="col-2 text-break text-white">
+          <%= b.bookedtime.toISOString().substring(0, 10) %>
+        </div>
+        <div class="col-3 text-white"><%= b.bookingMail %></div>
+
+        <% var stat = ""; var color = "" %> <% if(b.status == 0) {stat = "Pending";color = "text-warning" } %> <%
+        if(b.status == 1) {stat = "Confirmed";color = "text-success" } %> <% if(b.status == -1) {stat =
+        "Rejected"; color = "text-danger" } %>
+        <div class="col-3 h5 <%=color %>" ><%= stat %></div>
+      </div>
+      <hr color="white"
+        size="10" > </hr> <% } %>
+    </div>
+  </body>
+</html>

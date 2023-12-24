@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/head.ejs') %> <% if(user_id){%> <%-
+  include('partials/header.ejs')%> <% } %> <% if(!user_id) {%> <%-
+  include('partials/headersignout.ejs')%> <%}%>
+
+  <body>
+    <div class="text-center bg-info p-4">
+      <h1 class="text-light">BOOK MY TRIP</h1>
+    </div>
+
+    <div>
+      <img class="img-fluid w-100" src="./images/homepage.jpg" alt="" />
+    </div>
+
+    <!-- <a href="/packages"> Packages</a> -->
+  </body>
+
+  <%- include('partials/footer.ejs') %>
+</html>
