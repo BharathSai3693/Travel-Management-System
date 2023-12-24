@@ -1,40 +1,5 @@
 # Travel-Management-System
 
-2. REQUIREMENTS
-2.1 FUNCTIONAL REQUIREMENTS
-User Module:
-System must allow user to book package only after authentication.
-System should be able to show results according to the preferences set.
-System should allow the user to book the available package.
-Admin Module:
-System should allow the admin to manage users.
-System should aloe the admin to manage Booking i. e, Cancel or Confirm
-booking.
-System should allow admin to answer and send query respectively.
-System should allow the admin to create new packages or delete existing
-packages or edit the packages.
-2.2 NON-FUNCTIONAL REQUIREMENTS
-The major non-functional requirements of the system are as follows:
-Scalability:
-o Scalability is the measure of a system’s ability to increase or decrease in
-performance and cost in response to change in application and system
-processing demands.
-Security:
-o The system is secure , as the system allows a user to access it only after
-authentication.
-Flexibility:
-o It’s refers to a project’s ability to vary output in a cost-effective manner
-within its lifecycle or a given time-frame. It also determines how fast
-the project is able to adapt the changes within the project environment.
-o System is very flexible; it allows to add functionalities in the future.
-Portability:
-o It’s refers to the ability of an application to run properly in a different
-platform to the one it was designed for, with little or no modification.
-o System can be accessed from different browsers.
-Reliability:
-o It is an aspect of performance that refers to how consistently the project
-software does what it’s supposed to. System is reliable, it shows the
-reliable information to the users.
 2. 3 User Interfaces
 Home Page:
 Fig.2. 3.1
