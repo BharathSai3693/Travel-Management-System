@@ -1,150 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('partials/head.ejs') %> <%- include('partials/adminnavbar.ejs') %>
-  <body
-    style="
-      background-image: url('data:image/jpeg;base64,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');
-      background-size: cover;
-    "
-  >
-    <div class="container p-3 my-3 bg-dark" style="width: 50%">
-      <h3 class="text-white text-center">Edit Package Details</h3>
-      <form
-        action="/packages/<%=p._id%>?_method=PUT"
-        method="post"
-        class="bg-info p-3 rounded"
-      >
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="name">Package Name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                aria-describedby="emailHelp"
-                placeholder="Enter Package Name"
-                name="packageName"
-                value="<%= p.packageName%>"
-              />
-            </div>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Admin tools</p>
+            <h1 class="mb-1">Edit Package</h1>
+            <p class="text-muted mb-0">Update package details and availability.</p>
           </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="type">Package Type</label>
-              <input
-                type="text"
-                class="form-control"
-                id="type"
-                placeholder="Enter Package Type"
-                name="packageType"
-                value="<%=p.packageType%>"
-              />
-            </div>
-          </div>
+          <a class="btn tms-btn-outline mt-3 mt-lg-0" href="/adminpackages">
+            Back to packages
+          </a>
         </div>
+      </div>
+    </section>
 
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="location">Package Location</label>
-              <input
-                type="text"
-                class="form-control"
-                id="location"
-                name="packageLocation"
-                placeholder="Enter locations covered by package"
-                value="<%=p.packageLocation%>"
-              />
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label for="price">Package Price</label>
-              <input
-                type="number"
-                class="form-control"
-                id="price"
-                name="packagePrice"
-                placeholder="Enter Package Price"
-                value="<%=p.packagePrice%>"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="features">Package Features</label>
-          <input
-            type="text"
-            class="form-control"
-            id="features"
-            name="packageFeatures"
-            placeholder="Enter Package Features separetd by Commas"
-            value="<%=features%>"
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="url">Package Image</label>
-          <input
-            type="text"
-            class="form-control"
-            id="url"
-            name="packageImage"
-            placeholder="Enter Package Image URL"
-            value="<%=p.packageImage%>"
-          />
-        </div>
-
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label for="url">Days</label>
-              <input
-                type="text"
-                class="form-control"
-                id="days"
-                name="days"
-                placeholder="Enter Number of days"
-                value="<%=p.days%>"
-              />
-            </div>
-          </div>
-          <% var curr = new Date(); curr = curr.toISOString(); %>
-          <div class="col">
-            <div class="form-group">
-              <label for="url">Start Date</label>
-              <input
-                type="date"
-                class="form-control"
-                id="startdate"
-                name="startDate"
-                placeholder="Start date of package"
-                value="<%=p.days%>"
-                min="<%= curr.substring(0,10)  %>"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="details">Package Details</label>
-          <textarea
-            class="form-control"
-            name="packageDetails"
-            id="details"
-            cols="20"
-            rows="10"
-            placeholder="Enter Package Description"
+    <section class="tms-section">
+      <div class="container">
+        <div class="tms-card">
+          <form
+            action="/packages/<%=p._id%>?_method=PUT"
+            method="post"
           >
-<%=p.packageDetails%></textarea
-          >
-        </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="name">Package Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Enter Package Name"
+                    name="packageName"
+                    value="<%= p.packageName%>"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="type">Package Type</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="type"
+                    placeholder="Enter Package Type"
+                    name="packageType"
+                    value="<%=p.packageType%>"
+                  />
+                </div>
+              </div>
+            </div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form>
-    </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="location">Package Location</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    name="packageLocation"
+                    placeholder="Enter locations covered by package"
+                    value="<%=p.packageLocation%>"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="price">Package Price</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="price"
+                    name="packagePrice"
+                    placeholder="Enter Package Price"
+                    value="<%=p.packagePrice%>"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="features">Package Features</label>
+              <input
+                type="text"
+                class="form-control"
+                id="features"
+                name="packageFeatures"
+                placeholder="Enter Package Features separated by commas"
+                value="<%=features%>"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="url">Package Image</label>
+              <input
+                type="text"
+                class="form-control"
+                id="url"
+                name="packageImage"
+                placeholder="Enter Package Image URL"
+                value="<%=p.packageImage%>"
+              />
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="days">Days</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="days"
+                    name="days"
+                    placeholder="Enter Number of days"
+                    value="<%=p.days%>"
+                  />
+                </div>
+              </div>
+              <% var curr = new Date(); curr = curr.toISOString(); %>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="startdate">Start Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="startdate"
+                    name="startDate"
+                    placeholder="Start date of package"
+                    value="<%=p.days%>"
+                    min="<%= curr.substring(0,10)  %>"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="details">Package Details</label>
+              <textarea
+                class="form-control"
+                name="packageDetails"
+                id="details"
+                cols="20"
+                rows="6"
+                placeholder="Enter Package Description"
+              ><%=p.packageDetails%></textarea>
+            </div>
+
+            <button type="submit" class="btn tms-btn w-100">Save changes</button>
+          </form>
+        </div>
+      </div>
+    </section>
 
     <script>
       const date = new Date("<%= p.startDate %>");
@@ -162,15 +171,6 @@
         var days = document.getElementById("days").value;
         var date = document.getElementById("startdate").value;
         var details = document.getElementById("details").value;
-
-        //date validation
-        // var currDate = new Date();
-        // var packdate = new Date(date);
-
-        // if (currDate > packdate) {
-        //   alert("You Can't Select start Date from Past");
-        //   return false;
-        // }
 
         console.log("success");
         return true;

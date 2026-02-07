@@ -1,272 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('partials/head.ejs') %> <%- include('partials/adminnavbar.ejs') %>
-  <body>
-    <div
-      class="bg-warning p-3 text-center"
-      style="
-        background-image: url('data:image/jpeg;base64,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');
-        background-size: cover;
-      "
-    >
-      <h2 class="text-white">Administration</h2>
-    </div>
-
-    <div class="row">
-      <div class="col-3" id="dbleftpart">
-        <div class="row" id="dashboarditems">
-          <form class="w-100 h-100" action="/adminusers" method="get">
-            <input
-              class="w-100 h-100 text-white h5 dashboarditems"
-              type="submit"
-              value="Users"
-            />
-          </form>
-        </div>
-
-        <div class="row" id="dashboarditems">
-          <form class="w-100 h-100" action="/adminpackages" method="get">
-            <input
-              class="w-100 h-100 dashboarditems h5 text-white"
-              type="submit"
-              value="Packages"
-            />
-          </form>
-        </div>
-
-        <div class="row" id="dashboarditems">
-          <form class="w-100 h-100" action="/package/new" method="get">
-            <input
-              class="dashboarditems h5 text-white w-100 h-100"
-              type="submit"
-              value="Create New Package"
-            />
-          </form>
-        </div>
-
-        <div class="row" id="dashboarditems">
-          <form class="w-100 h-100" action="/adminbookings" method="get">
-            <input
-              class="dashboarditems h5 text-white w-100 h-100"
-              type="submit"
-              value="Bookings"
-            />
-          </form>
-        </div>
-
-        <div class="row" id="dashboarditems">
-          <form class="w-100 h-100" action="/adminenquiries" method="get">
-            <input
-              class="dashboarditems h5 text-white w-100 h-100"
-              type="submit"
-              value="Enquiries"
-            />
-          </form>
-        </div>
-
-        <div class="row" id="dashboarditems">
-          <form class="w-100 h-100" action="/adminreports" method="get">
-            <input
-              class="dashboarditems h5 text-white w-100 h-100"
-              type="submit"
-              value="Reports"
-            />
-          </form>
-        </div>
-
-        <div class="row" id="dashboarditems">
-          <form class="w-100 h-100" action="/adminlogout" method="post">
-            <input
-              class="dashboarditems h5 text-white w-100 h-100"
-              type="submit"
-              value="Logout"
-            />
-          </form>
-        </div>
-      </div>
-
-      <div
-        class="col-9 p-4 bg-secondary"
-        id="dbrightpart"
-        style="
-          background-image: url('https://img.freepik.com/free-vector/blue-pink-halftone-background_53876-99004.jpg?size=626&ext=jpgx');
-          background-size: cover;
-        "
-      >
-        <div class="row p-3">
-          <div class="col-4 p-3 rounded m-auto">
-            <a href="/adminusers" style="text-decoration: none">
-              <div
-                class="row p-3"
-                style="
-                  background-image: url('https://media.istockphoto.com/photos/abstract-background-in-gradient-in-yellow-and-orange-picture-id495798818?k=20&m=495798818&s=612x612&w=0&h=s6JUNR9jP8EV5bDf3gn_rAGvbjY3wz4Jl75dcoNQQ0g=');
-                  background-size: cover;
-                "
-              >
-                <div class="col m-auto">
-                  <h1 class="text-center text-white"><%= usersCount %></h1>
-                  <p class="text-center text-white h4">Users</p>
-                </div>
-                <div class="col m-auto">
-                  <img
-                    src="./images/team.png"
-                    alt=""
-                    style="height: 100px; width: 100px"
-                  />
-                </div>
-              </div>
-            </a>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Admin overview</p>
+            <h1 class="mb-1">Dashboard</h1>
+            <p class="text-muted mb-0">
+              Track activity, manage packages, and monitor bookings in real time.
+            </p>
           </div>
-
-          <div class="col-4 p-3 rounded m-auto">
-            <a href="/adminpackages" style="text-decoration: none;">
-              <div
-                class="row p-3"
-                style="
-                  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdaURQhQv05BbGIOzPAY-XWpZ9K77l0lLJHQ&usqp=CAU');
-                  background-size: cover;
-                "
-              >
-                <div class="col m-auto">
-                  <h1 class="text-center text-white"><%= packagesCount %></h1>
-                  <p class="text-center text-white h4">Packages</p>
-                </div>
-                <div class="col m-auto">
-                  <img
-                    src="./images/travel.png"
-                    style="height: 100px; width: 100px"
-                  />
-                </div>
-              </div>
-            </a>
-          </div>
-
-          <div class="col-4 p-3 rounded m-auto">
-            <a href="/adminbookings" style="text-decoration: none;">
-            <div
-              class="row p-3"
-              style="
-                background-image: url('data:image/jpeg;base64,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');
-                background-size: cover;
-              "
-            >
-              <div class="col m-auto">
-                <h1 class="text-center text-white"><%= bookingsCount %></h1>
-                <p class="text-center text-white h4">Bookings</p>
-              </div>
-              <div class="col m-auto">
-                <img
-                  src="./images/booking.png"
-                  alt=""
-                  style="height: 100px; width: 100px"
-                />
-              </div>
-            </div>
-          </div>
-        </a>
-        </div>
-
-        <div class="row p-3">
-          <div class="col-4 p-3 rounded m-auto">
-            <a href="/adminenquiries" style="text-decoration: none;">
-            <div
-              class="row p-3"
-              style="
-                background-image: url('data:image/jpeg;base64,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');
-                background-size: cover;
-              "
-            >
-              <div class="col m-auto">
-                <h1 class="text-center text-white"><%= enquiriesCount %></h1>
-                <p class="text-center text-white h4">Enquiries</p>
-              </div>
-              <div class="col m-auto">
-                <img
-                  src="./images/team.png"
-                  alt=""
-                  style="height: 100px; width: 100px"
-                />
-              </div>
-            </div>
-          </a>
-          </div>
-
-          <div class="col-4 p-3 rounded m-auto">
-            <a href="/adminreports" style="text-decoration: none;">
-            <div
-              class="row p-3"
-              style="
-                background-image: url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcIBwgIBwcHBwcHBw0HBwcHBw8ICQcNIBEWIhURExMYHSggGCYlGx8VITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDw0NDy0ZFRkrKystLSsrLSsrLS0tLS0rKysrLTcrKysrLS0rKysrKy0rKysrKysrKysrKysrKysrLf/AABEIALEBHAMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAABAAIGBQf/xAAWEAEBAQAAAAAAAAAAAAAAAAAAARH/xAAaAQEBAQEBAQEAAAAAAAAAAAACAQUGAAME/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwD44QWk/WiCryIKqiCqogqqIJPIpKqKJRUUlVFElRRLFSRwpFRRKRUsKLCxHFhxcXEjhwsXBhw4sLFGHDixcXHjkFis9EFXkQVVEFVKSJSkSVFFVRBKRUUSkVFEpCRRKR5RE4eEIcKwpFxHFjRSFgkKOFirFhOFIuA4cOFIuDFhkOLi48MosFmpIkqSKqikSooqqKRKUiUioolIqKJSEiiciorCUi4ijhSFikMihw5FWE4sKRcWHDhw5CwHFIcKRcWHDiwpCwYThwsXHgFFzzLSRVUUleRRKEiCUVFEpFRRKRUUTkJFQlIqKaKRcBkOGHIWKFEpCWHEZDkXFIVjWHIWDDhw4Ui4MJw4chYMOHDhSLgw4cOFIuOeSLm2UikqookqSJKiiUioolIqKJyEjESkVNRQnIUihiMKRcWHFjWHIQxpSGHIUiMihhyLIpDITIUhYMaxQ4ci4sOLDhyFiw4sOFIWKQ4cWFIuOcKTmGQiiUipIkqKJSKiiUioolISKhORUYo0chRQxQwpFiMTUOQlCoYchYjijUORZFIUZDkJQ4o1IchYGsUMOQpFIZFGoUijDhw4chYMOGQ4Ui45kouWxjpIkqKhKRVCiUioolIqKJyEiiUixRqCNQ5CihiJyEYVCchRGKGHIshhiJyEo1ETkKKQonIUUaihOQkVGociyDDIYTkLEiSkJzCKcoxUUSkVFEoqKJRUQ1CkVQho5CUKJSEo0GociqFQw5ChMDUOQoo0I1DkJQxQnIUMKhj6SFIo1BGochKGKE5FkUaiJyEiichIo4UiuXKLk5GKikSooqqKJyKijCioxGHIRhihKEmhCcWGFQw4SjUEahyFFGoIY+kKGGKE5ChhgahyEo1BGochRQxQw4UJihOQlDETioolITlyk5NiIoqqKRKTBCUUkE4sJEahQlDEYcImBqHFRihhwoYYoThGERqHCijUEMOFDGoIYcIwwRqPpChhBhwiQTiwtRmNFCMSRRXMFFybFSRWKoUijxIJwjDASikwNFCUagMOLDCCcIxqCGHChhgjUOFDDBDDhQxpmNQ4RhghOLGoYy1DhQmAnCMMBKKYQYcIkRErm0k5RilQpYqIRKSkUUxqJFCJSOKYUihQwxI4rUJRwomgjhNFI4RjUSOEYYkcUmJHCjUKRQiUjikwIorUSRwn/9k=');
-                background-size: cover;
-              "
-            >
-              <div class="col m-auto">
-                <p class="text-center text-white h4">Reports</p>
-              </div>
-              <div class="col m-auto">
-                <img
-                  src="./images/report.png"
-                  alt=""
-                  style="height: 100px; width: 100px"
-                />
-              </div>
-            </div>
-            </a>
+          <div class="d-flex flex-wrap">
+            <a class="btn tms-btn mr-2 mb-2" href="/package/new">New package</a>
+            <a class="btn tms-btn-outline mb-2" href="/adminreports">View reports</a>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="tms-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-6 mb-4">
+            <a href="/adminusers" class="tms-metric-card">
+              <div class="tms-metric-body">
+                <p class="text-muted mb-1">Users</p>
+                <h2 class="mb-2"><%= usersCount %></h2>
+                <span class="tms-pill">View users</span>
+              </div>
+              <div class="tms-metric-icon">
+                <img src="./images/team.png" alt="Users" />
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 mb-4">
+            <a href="/adminpackages" class="tms-metric-card">
+              <div class="tms-metric-body">
+                <p class="text-muted mb-1">Packages</p>
+                <h2 class="mb-2"><%= packagesCount %></h2>
+                <span class="tms-pill">Manage</span>
+              </div>
+              <div class="tms-metric-icon">
+                <img src="./images/travel.png" alt="Packages" />
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 mb-4">
+            <a href="/adminbookings" class="tms-metric-card">
+              <div class="tms-metric-body">
+                <p class="text-muted mb-1">Bookings</p>
+                <h2 class="mb-2"><%= bookingsCount %></h2>
+                <span class="tms-pill">Review</span>
+              </div>
+              <div class="tms-metric-icon">
+                <img src="./images/booking.png" alt="Bookings" />
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-sm-6 mb-4">
+            <a href="/adminenquiries" class="tms-metric-card">
+              <div class="tms-metric-body">
+                <p class="text-muted mb-1">Enquiries</p>
+                <h2 class="mb-2"><%= enquiriesCount %></h2>
+                <span class="tms-pill">Respond</span>
+              </div>
+              <div class="tms-metric-icon">
+                <img src="./images/team.png" alt="Enquiries" />
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="tms-card">
+              <h4 class="mb-2">Quick actions</h4>
+              <p class="text-muted mb-3">
+                Jump into common admin tasks without leaving the dashboard.
+              </p>
+              <div class="tms-admin-actions">
+                <a href="/adminpackages" class="btn tms-btn-outline">All packages</a>
+                <a href="/adminbookings" class="btn tms-btn-outline">Manage bookings</a>
+                <a href="/adminusers" class="btn tms-btn-outline">User list</a>
+                <a href="/adminreports" class="btn tms-btn-outline">Reports</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4">
+            <div class="tms-card">
+              <h4 class="mb-2">Admin notes</h4>
+              <p class="text-muted mb-0">
+                Use this space to review latest system updates, highlight trending
+                packages, or note pending items for the team.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
-
-<!-- 
-
-<div class="row my-3">
-  <div class="col-4">
-    <div class="card p-3 bg-primary">
-      <form action="/adminusers" method="get">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">
-          USERS
-        </button>
-      </form>
-       <h5 class="card-body text-danger text-center">USERS</h5> 
-      <h4 class="text-light text-center"><%= usersCount %></h4>
-    </div>
-  </div>
-  <div class="col-4">
-    <div class="card p-3 bg-primary">
-      <form action="/adminpackages" method="get">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">
-          PACKAGES
-        </button>
-      </form>
-       <h5 class="card-body text-danger text-center">PACKAGES</h5> 
-      <h4 class="text-light text-center"><%= packagesCount %></h4>
-    </div>
-  </div>
-  <div class="col-4">
-    <div class="card p-3 bg-primary">
-      <form action="/adminbookings" method="get">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">
-          BOOKINGS
-        </button>
-      </form>
-       <h5 class="card-body text-danger text-center">BOOKINGS</h5> 
-      <h4 class="text-light text-center"><%= bookingsCount %></h4>
-    </div>
-  </div>
-</div>
-
-<div class="row my-3">
-  <div class="col-4">
-    <div class="card p-3 bg-primary">
-      <form action="/adminenquiries" method="get">
-        <button type="submit" class="btn btn-primary btn-lg btn-block">
-          Enquiries
-        </button>
-      </form>
-      <h5 class="card-body text-danger text-center">USERS</h5> 
-      <h4 class="text-light text-center"><%= enquiriesCount %></h4>
-    </div>
-  </div>
-</div> -->

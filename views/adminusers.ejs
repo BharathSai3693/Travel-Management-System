@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("./partials/head.ejs") %> <%-
-  include("./partials/adminnavbar.ejs") %>
+  <%- include("./partials/head.ejs") %> <%- include("./partials/adminnavbar.ejs") %>
 
-  <body
-    style="
-      background-image: url('https://cdn2.vectorstock.com/i/1000x1000/19/76/polygonal-square-background-sky-blue-gradient-vector-21441976.jpg');
-      background-size: cover;
-    "
-  >
-    <div class="container">
-      <div
-        class="row bg-success text-light p-3 h5"
-        style="
-          background-image: url('https://media.istockphoto.com/vectors/dark-blue-gradient-background-modern-look-vector-id1174818917?k=20&m=1174818917&s=170667a&w=0&h=LJUGwwFqqUUrnc63IwQvCXGh1MwuhlqOKIJY1vxSW1s=');
-          background-size: cover;
-          height: 50px;
-        "
-      >
-        <div class="col">User ID</div>
-        <div class="col">User Name</div>
-        <div class="col">Email Address</div>
-        <div class="col">Mobile Number</div>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Admin overview</p>
+            <h1 class="mb-1">Users</h1>
+            <p class="text-muted mb-0">Manage and review registered travelers.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <% for(let user of users){ %>
+    <section class="tms-section">
+      <div class="container">
+        <div class="tms-history-table">
+          <div class="tms-history-row tms-history-head">
+            <div>User ID</div>
+            <div>User Name</div>
+            <div>Email Address</div>
+            <div>Mobile Number</div>
+          </div>
 
-      <div class="row text-white p-3 h6">
-        <div class="col"><%= user._id %></div>
-        <div class="col"><%= user.username %></div>
-        <div class="col"><%= user.email %></div>
-        <div class="col"><%= user.mobile %></div>
+          <% for(let user of users){ %>
+          <div class="tms-history-row">
+            <div class="text-muted"><%= user._id %></div>
+            <div class="font-weight-semibold"><%= user.username %></div>
+            <div class="text-muted"><%= user.email %></div>
+            <div class="text-muted"><%= user.mobile %></div>
+          </div>
+          <% } %>
+        </div>
       </div>
-      <hr color="white" size="15" />
-      <% } %>
-    </div>
+    </section>
   </body>
 </html>

@@ -1,83 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include("./partials/head.ejs") %> <%- include("./partials/header.ejs") %>
-  <body
-    style="
-      background-image: url('https://wallpaperaccess.com/full/1567665.png');
-      background-size: cover;
-    "
-  >
-    <div class="container">
-      <h1 class="text-white text-center">Most Frequent Packages</h1>
-      <% for (let p of packages){ %>
-      <div class="row my-3">
-        <div class="col-4">
-          <img
-            src="<%=p.packageImage %>"
-            height="150"
-            width="270"
-            alt=""
-            class="w-100 h-100"
-          />
-        </div>
-        <div class="col bg-info p-2">
-          <p>
-            <b class="display-4"><%=p.packageName%></b> - <%=p.bookings %>
-            Bookings
-          </p>
-
-          <div class="row">
-            <div class="col">
-              Type :
-              <h5><%= p.packageType %></h5>
-            </div>
-            <div class="col">
-              Days :
-              <h5><%= p.days %></h5>
-            </div>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Trending now</p>
+            <h1 class="mb-1">Most Frequent Packages</h1>
+            <p class="text-muted mb-0">
+              See the destinations travelers book the most.
+            </p>
           </div>
-          <div class="row">
-            <div class="col">
-              Price :
-              <h5><%= p.packagePrice %></h5>
-            </div>
-            <div class="col">
-              <a href="/userpackages/<%= p._id %>">
-                <button class="btn btn-lg bg-primary text-white my-3">
+          <a class="btn tms-btn mt-3 mt-lg-0" href="/packages">Explore all</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tms-section">
+      <div class="container">
+        <div class="row">
+          <% for (let p of packages){ %>
+          <div class="col-lg-6 mb-4">
+            <div class="tms-package-card">
+              <div class="tms-package-media">
+                <img src="<%=p.packageImage %>" alt="<%= p.packageName %>" />
+              </div>
+              <div class="tms-package-body">
+                <div class="d-flex align-items-start justify-content-between">
+                  <div>
+                    <h4 class="mb-1"><%=p.packageName%></h4>
+                    <p class="text-muted mb-2">
+                      <%= p.packageType %> • <%= p.days %> days
+                    </p>
+                  </div>
+                  <div class="tms-price">
+                    <%= p.bookings %>
+                    <span class="tms-price-note">bookings</span>
+                  </div>
+                </div>
+
+                <div class="tms-package-meta">
+                  <span><strong>Location:</strong> <%= p.packageLocation %></span>
+                  <span><strong>Price:</strong> ₹<%= p.packagePrice %></span>
+                </div>
+
+                <a href="/userpackages/<%= p._id %>" class="btn tms-btn w-100">
                   Open Package
-                </button>
-              </a>
+                </a>
+              </div>
             </div>
           </div>
+          <% } %>
         </div>
       </div>
-      <% } %>
-    </div>
-
-    <!-- <div class="container">
-      <div class="row bg-info p-3 text-white h4">
-        <div class="col">Package Name</div>
-        <div class="col">package Type</div>
-        <div class="col">Package Days</div>
-        <div class="col">Package Price</div>
-
-        <div class="col">Bookings</div>
-      </div>
-
-      <% for(let p of packages){ %>
-      <div class="row bg-dark p-3 text-white">
-        <div class="col">
-          <a class="text-white h5" href="/packages/<%=p._i%> ">
-            <u> <%=p.packageName%></u></a
-          >
-        </div>
-        <div class="col"><%=p.packageType%></div>
-        <div class="col"><%=p.days%></div>
-        <div class="col"><%=p.packagePrice%></div>
-        <div class="col"><%=p.bookings%></div>
-      </div>
-
-      <% } %>
-    </div> -->
+    </section>
   </body>
 </html>

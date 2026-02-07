@@ -1,48 +1,54 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-dark p-3">
-    <a class="navbar-brand text-light" href="/">
-      <img
-        src="https://assets.materialup.com/uploads/452fb4cb-d3cd-404e-bfe5-6015b92902d9/preview.jpg"
-        alt="LOGO"
-        height="30"
-        width="35"
-      />
-    </a>
+  <nav class="navbar navbar-expand-lg navbar-light tms-navbar">
+    <div class="container">
+      <a class="navbar-brand tms-brand" href="/">
+        <span class="tms-brand-mark"></span>
+        <span class="tms-brand-text">Book My Trip</span>
+      </a>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link text-light" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="/myprofile">My profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="/packages">Packages</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="/tourhistory">Tour History</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="/enquiry">Enquiry</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="/popular">Popular</a>
-        </li>
-      </ul>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/myprofile">My profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/packages">Packages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/tourhistory">Tour History</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/enquiry">Enquiry</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/popular">Popular</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center">
+          <span class="tms-pill mr-3"
+            >Welcome<% if(name){ %>: <%= name %><% } %></span
+          >
+          <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
+            <button class="btn tms-btn-outline" type="submit">Log Out</button>
+          </form>
+        </div>
+      </div>
     </div>
-
-    <p
-      class="form-inline my-2 my-lg-0 text-light mx-1 h5"
-      style="
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-          sans-serif;
-      "
-    >
-      Welcome : <% if(name){%> <%= name %> <%}%> |
-    </p>
-    <form class="form-inline my-2 my-lg-0" action="/logout" method="post">
-      <input type="submit" value="Log Out" />
-    </form>
   </nav>
 </header>

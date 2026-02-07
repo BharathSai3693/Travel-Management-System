@@ -2,67 +2,83 @@
 <html lang="en">
   <%- include('partials/head.ejs') %>
 
-  <body class="p-3">
-    <div class="container p-4 bg-info">
-      <h1 class="text-center text-light">ADMIN REGISTARTION FORM</h1>
+  <body class="tms-auth-body">
+    <div class="container tms-auth">
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <div class="tms-auth-card">
+            <p class="tms-pill d-inline-block mb-3">Admin access</p>
+            <h1 class="text-center mb-2">Admin Registration</h1>
+            <p class="text-center text-muted mb-4">
+              Create credentials to manage the platform.
+            </p>
 
-      <form onsubmit="return Validate()" action="/adminregister" method="post">
-        <div class="form-group">
-          <label class="text-light"><b>Name</b></label>
-          <input
-            type="text"
-            class="form-control"
-            name="username"
-            id="username"
-            placeholder="Enter your Name"
-          />
-        </div>
-        <div class="form-group">
-          <label class="text-light"><b>Email address</b></label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            name="email"
-            placeholder="Enter your E-mail Address"
-          />
-        </div>
+            <form onsubmit="return Validate()" action="/adminregister" method="post">
+              <div class="form-group">
+                <label><b>Name</b></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="username"
+                  id="username"
+                  placeholder="Enter your Name"
+                />
+              </div>
+              <div class="form-group">
+                <label><b>Email address</b></label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your E-mail Address"
+                />
+              </div>
 
-        <div class="form-group">
-          <label class="text-light"><b>Password</b></label>
-          <input
-            type="password"
-            class="form-control"
-            name="password"
-            id="password"
-            placeholder="Enter Your Password"
-          />
-        </div>
+              <div class="form-group">
+                <label><b>Password</b></label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  id="password"
+                  placeholder="Enter Your Password"
+                />
+              </div>
 
-        <div class="form-group">
-          <label class="text-light"><b>Password</b></label>
-          <input
-            type="password"
-            class="form-control"
-            name="Cpassword"
-            id="Cpassword"
-            placeholder="Confirm Your Password"
-          />
-        </div>
+              <div class="form-group">
+                <label><b>Confirm Password</b></label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="Cpassword"
+                  id="Cpassword"
+                  placeholder="Confirm Your Password"
+                />
+              </div>
 
-        <div class="form-group">
-          <label class="text-light"><b>Mobile Number</b></label>
-          <input
-            type="tel"
-            class="form-control"
-            id="mobile"
-            name="mobile"
-            placeholder="Enter Mobile Number"
-          />
-        </div>
+              <div class="form-group">
+                <label><b>Mobile Number</b></label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="mobile"
+                  name="mobile"
+                  placeholder="Enter Mobile Number"
+                />
+              </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+              <button type="submit" class="btn tms-btn w-100">Create account</button>
+            </form>
+
+            <div class="text-center mt-3">
+              <a class="text-muted" href="/adminlogin">
+                Already an admin? Sign in
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script>
@@ -72,7 +88,6 @@
         var password = document.getElementById("password").value;
         var Cpassword = document.getElementById("Cpassword").value;
         var mobile = document.getElementById("mobile").value;
-        // var dob = document.getElementById("dob").value;
 
         console.log(name);
         console.log(email);

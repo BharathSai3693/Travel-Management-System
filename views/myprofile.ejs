@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include("./partials/head.ejs") %> <%- include("./partials/header.ejs") %>
-  <body
-    style="
-      background-image: url('https://image.shutterstock.com/image-vector/light-blue-vector-triangle-mosaic-260nw-766328398.jpg');
-      background-size: cover;
-    "
-  >
-    <div
-      class="container bg-info p-5"
-      style="
-        background-image: url('https://htmlcolors.com/gradients-images/34-asana-color-gradient.jpg');
-        width: 600px;
-      "
-    >
-      <div class="details text-white p-4">
-        <!-- <div class="row">
-          <div class="col-4 h3 text-right text-primary">Name</div>
-          <div class="col h3 text-info"><%= user.username %></div>
-        </div> -->
-
-        <img
-          src="https://img.icons8.com/color/144/000000/circled-user-male-skin-type-1-2--v2.png"
-          height="150px"
-          width="150px"
-          alt="Profile Pic"
-          style="margin-left: 140px"
-          class="my-2"
-        />
-
-        <h3 class="text-center"><%= user.username.toUpperCase() %></h3>
-        <hr />
-
-        <h4 class="text-center">E-mail : <%= user.email %></h4>
-        <h4 class="text-center">Mobile : <%= user.mobile %></h4>
-        <h4 class="text-center">
-          DOB :<%= user.dob.toISOString().substring(0, 10); %>
-        </h4>
-
-        <hr />
-        <form action="/myprofile/edit" method="get">
-          <button class="btn btn-warning">Edit Details</button>
-        </form>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Your account</p>
+            <h1 class="mb-1">My Profile</h1>
+            <p class="text-muted mb-0">Keep your details up to date.</p>
+          </div>
+          <a class="btn tms-btn mt-3 mt-lg-0" href="/myprofile/edit">
+            Edit details
+          </a>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section class="tms-section">
+      <div class="container">
+        <div class="tms-profile-card">
+          <div class="tms-profile-avatar">
+            <img
+              src="https://img.icons8.com/color/144/000000/circled-user-male-skin-type-1-2--v2.png"
+              alt="Profile"
+            />
+          </div>
+          <div class="tms-profile-info">
+            <h2 class="mb-1"><%= user.username %></h2>
+            <p class="text-muted mb-3">Traveler account</p>
+
+            <div class="tms-profile-grid">
+              <div>
+                <span class="text-muted">Email</span>
+                <h5 class="mb-0"><%= user.email %></h5>
+              </div>
+              <div>
+                <span class="text-muted">Mobile</span>
+                <h5 class="mb-0"><%= user.mobile %></h5>
+              </div>
+              <div>
+                <span class="text-muted">Date of birth</span>
+                <h5 class="mb-0"><%= user.dob.toISOString().substring(0, 10) %></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

@@ -1,67 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
   <%- include('partials/head.ejs') %>
+  <% if(user_id){ %>
+  <%- include('partials/header.ejs') %>
+  <% } else { %>
+  <%- include('partials/headersignout.ejs') %>
+  <% } %>
 
-  <body
-    style="
-      background-image: url('https://cdn.wallpapersafari.com/47/46/RWFb2z.jpg');
-      background-size: cover;
-    "
-  >
-    <%- include('partials/header.ejs') %>
-
-    <div class="container p-4">
-      <div class="row">
-        <div class="col">
-          <img src="<%=p.packageImage%>" height="300px" width="550px" />
-        </div>
-        <div class="col">
-          <h1><%= p.packageName%></h1>
-
-          <div class="row">
-            <div class="col">
-              <h5>Package type : <%= p.packageType%></h5>
-            </div>
-            <div class="col">
-              <h5>Package Price : <%=p.packagePrice%></h5>
-            </div>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Package details</p>
+            <h1 class="mb-1"><%= p.packageName%></h1>
+            <p class="text-muted mb-0"><%= p.packageLocation %></p>
           </div>
-
-          <div class="row">
-            <div class="col">
-              <h5>Days : <%= p.days %></h5>
-            </div>
-            <div class="col">
-              <h5>Date : <%= p.startDate.toUTCString().substring(0, 16) %></h5>
-            </div>
-          </div>
-
-          <h5>Package Locations : <%=p.packageLocation%></h5>
-
-          <div class="row">
-            <% for(let f of p.packageFeatures){%>
-            <span class="badge badge-lg badge-primary m-2"> <%=f%> </span>
-            <%}%>
-          </div>
-
-          <div class="row my-3 w-100">
-            <form class="w-100" action="/booking/<%=p._id%>" method="get">
-              <input
-                class="w-100 btn btn-success"
-                type="submit"
-                value="Book Package"
-              />
-            </form>
-          </div>
-        </div>
-
-        <div class="p-4">
-          <h2>Details</h2>
-          <p><%=p.packageDetails%></p>
+          <a class="btn tms-btn-outline mt-3 mt-lg-0" href="/packages">
+            Back to packages
+          </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <script></script>
+    <section class="tms-section">
+      <div class="container">
+        <div class="tms-package-detail">
+          <div class="tms-package-detail-media">
+            <img src="<%=p.packageImage%>" alt="<%= p.packageName %>" />
+          </div>
+          <div class="tms-package-detail-body">
+            <div class="d-flex align-items-start justify-content-between flex-wrap">
+              <div>
+                <h3 class="mb-2"><%= p.packageName%></h3>
+                <p class="text-muted mb-3">
+                  <%= p.packageType%> • <%= p.packageLocation %>
+                </p>
+              </div>
+              <div class="tms-price">
+                ₹<%=p.packagePrice%>
+                <span class="tms-price-note">per person</span>
+              </div>
+            </div>
+
+            <div class="tms-package-meta">
+              <span><strong>Days:</strong> <%= p.days %></span>
+              <span
+                ><strong>Date:</strong>
+                <%= p.startDate.toUTCString().substring(0, 16) %></span
+              >
+            </div>
+
+            <div class="tms-chip-row">
+              <% for(let f of p.packageFeatures){%>
+              <span class="tms-chip"><%= f %></span>
+              <%}%>
+            </div>
+
+            <div class="tms-cta-row">
+              <% if(user_id){ %>
+              <form class="w-100" action="/booking/<%=p._id%>" method="get">
+                <button class="btn tms-btn w-100" type="submit">
+                  Book Package
+                </button>
+              </form>
+              <% } else { %>
+              <a class="btn tms-btn w-100" href="/login">Sign in to book</a>
+              <% } %>
+            </div>
+          </div>
+        </div>
+
+        <div class="tms-card mt-4">
+          <h4 class="mb-2">Details</h4>
+          <p class="text-muted mb-0"><%=p.packageDetails%></p>
+        </div>
+      </div>
+    </section>
   </body>
 </html>

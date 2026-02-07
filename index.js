@@ -63,7 +63,8 @@ compare = (a1, a2) => a1.reduce((a, c) => a + a2.includes(c), 0);
 //middlewares
 const requireUserLogin = (req, res, next) => {
   if (!req.session.user_id) {
-    res.redirect("/login");
+    req.flash("loginerror", "Please sign in or sign up to continue.");
+    return res.redirect("/login");
   }
   next();
 };
@@ -134,12 +135,12 @@ app.post("/adminlogout", (req, res) => {
 });
 
 //admin dashboard
-app.get("/dashboard",  async (req, res) => {
+app.get("/dashboard", async (req, res) => {
   //console.log(req.session);
-  const usersCount = 2 //await User.count({});
-  const packagesCount = 3//await Package.count({});
-  const bookingsCount = 4//await Booking.count({});
-  const enquiriesCount = 5// await Enquiry.count({});
+  const usersCount = await User.countDocuments({});
+  const packagesCount = await Package.countDocuments({});
+  const bookingsCount = await Booking.countDocuments({});
+  const enquiriesCount = await Enquiry.countDocuments({});
   const name = req.session.adminname;
   res.render("admindashboard.ejs", {
     usersCount,
@@ -380,22 +381,24 @@ app.put("/packages", async (req, res, next) => {
 });
 
 //all packages list
-app.get("/packages", requireUserLogin, async (req, res) => {
+app.get("/packages", async (req, res) => {
   const packages = await Package.find({});
   const username = req.session.username;
+  const user_id = req.session.user_id || false;
   var tags = req.session.tags;
   if (!tags) {
     tags = [];
   }
-  res.render("packages.ejs", { packages, name: username, tags });
+  res.render("packages.ejs", { packages, name: username, tags, user_id });
 });
 
 //open specific package - user
-app.get("/userpackages/:id", requireUserLogin, async (req, res) => {
+app.get("/userpackages/:id", async (req, res) => {
   const { id } = req.params;
   const package = await Package.findById(id);
   const username = req.session.username;
-  res.render("userpackagepage.ejs", { p: package, name: username });
+  const user_id = req.session.user_id || false;
+  res.render("userpackagepage.ejs", { p: package, name: username, user_id });
 });
 
 //Book a Package - user

@@ -2,88 +2,95 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %> <%- include("./partials/header.ejs") %>
 
-  <body
-    style="
-      background-image: url('https://media.istockphoto.com/photos/and-a-concept-yellow-question-mark-glowing-amid-black-question-marks-picture-id1305169776?b=1&k=20&m=1305169776&s=170667a&w=0&h=mpYdh2MzGN_rqxoRNlO5KWGCCq3ZktzSfp-wA0nD9no=');
-      background-size: cover;
-    "
-  >
-    <div class="container enquiry-form p-3 border border-info rounded my-3">
-      <form
-        action="/enquiry/new"
-        method="post"
-        class="text-white p-3 opacity-25"
-      >
-        <h2 class="text-center">WRITE YOUR ENQUIRY</h2>
-        <div class="form-group">
-          <label>Category</label>
-          <select
-            name="category"
-            class="form-control bg-light"
-            value="Select category"
-          >
-            <option value="" disabled selected>Select Category</option>
-            <option value="Payment">Payment</option>
-            <option value="Packages">Packages</option>
-            <option value="Cancellation">Cancellation</option>
-            <option value="Accomodation">Accomodation</option>
-            <option value="Travel">Travel</option>
-          </select>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Need help?</p>
+            <h1 class="mb-1">Enquiries</h1>
+            <p class="text-muted mb-0">
+              Send us your questions and track responses in one place.
+            </p>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Description</label>
-          <textarea
-            required
-            name="description"
-            class="form-control bg-light"
-            cols="30"
-            rows="5"
-            placeholder="Write your Enquiry"
-          ></textarea>
-        </div>
-        <button type="submit" class="btn btn-danger">Submit</button>
-      </form>
-    </div>
-
-    <div class="container p-3 border border-info rounded my-3">
-      <h1 class="text-white text-center">Enquiries History</h1>
-      <% if (enquiries.length > 0) { %>
-      <div
-        class="row bg-warning p-3"
-        style="
-          background-image: url('https://image.shutterstock.com/image-illustration/travel-yellow-green-color-wide-260nw-1772580074.jpg');
-          background-size: cover;
-        "
-      >
-        <div class="col h5 text-light">Enquiry ID</div>
-        <div class="col h5 text-light">Category</div>
-        <div class="col h5 text-light">Description</div>
-        <div class="col h5 text-light">Status</div>
       </div>
-      <div class="">
-        <% for(let e of enquiries){ %>
-        <div
-          class="row p-3"
-          style="
-            background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThJuMOj3tDNHuRl5s4A_BoRz3xvhbagQ7Hadi8QFYTEu9v3eDlHKaSs6aGORKQ_1_sF7c&usqp=CAU');
-            background-size: cover;
-          "
-        >
-          <div class="h6 col text-break text-white"><%= e._id %></div>
-          <div class="h6 col text-break text-white"><%= e.category %></div>
-          <div class="h6 col text-break text-white"><%= e.description %></div>
+    </section>
 
-          <% var stat = ""; var color = ""; %> <% if(e.status == 0) {stat =
-          "Pending"; color = "text-warning" } %> <% if(e.status == 1) {stat =
-          "Confirmed";color = "text-success" } %> <% if(e.status == -1) {stat =
-          "Rejected";color = "text-danger" } %>
+    <section class="tms-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-5 mb-4">
+            <div class="tms-card">
+              <h4 class="mb-3">Write a new enquiry</h4>
+              <form action="/enquiry/new" method="post">
+                <div class="form-group">
+                  <label>Category</label>
+                  <select name="category" class="form-control" required>
+                    <option value="" disabled selected>Select Category</option>
+                    <option value="Payment">Payment</option>
+                    <option value="Packages">Packages</option>
+                    <option value="Cancellation">Cancellation</option>
+                    <option value="Accomodation">Accomodation</option>
+                    <option value="Travel">Travel</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea
+                    required
+                    name="description"
+                    class="form-control"
+                    cols="30"
+                    rows="5"
+                    placeholder="Write your enquiry"
+                  ></textarea>
+                </div>
+                <button type="submit" class="btn tms-btn w-100">Submit</button>
+              </form>
+            </div>
+          </div>
 
-          <div class="h3 col text-break text-white <%=color%>"><%= stat %></div>
-          <hr />
+          <div class="col-lg-7">
+            <div class="tms-card">
+              <div class="d-flex align-items-center justify-content-between mb-3">
+                <h4 class="mb-0">Enquiry history</h4>
+                <span class="text-muted small">Total: <%= enquiries.length %></span>
+              </div>
+
+              <% if (enquiries.length > 0) { %>
+              <div class="tms-history-table">
+                <div class="tms-history-row tms-history-head">
+                  <div>Enquiry ID</div>
+                  <div>Category</div>
+                  <div>Description</div>
+                  <div>Status</div>
+                </div>
+
+                <% for(let e of enquiries){ %>
+                <div class="tms-history-row">
+                  <div class="text-muted"><%= e._id %></div>
+                  <div class="font-weight-semibold"><%= e.category %></div>
+                  <div class="text-muted"><%= e.description %></div>
+
+                  <% var stat = ""; var badge = ""; %> <% if(e.status == 0) {stat =
+                  "Pending"; badge = "pending" } %> <% if(e.status == 1) {stat =
+                  "Confirmed";badge = "confirmed" } %> <% if(e.status == -1) {stat =
+                  "Rejected";badge = "rejected" } %>
+
+                  <div>
+                    <span class="tms-badge <%= badge %>"><%= stat %></span>
+                  </div>
+                </div>
+                <% } %>
+              </div>
+              <% } else { %>
+              <p class="text-muted mb-0">No enquiries yet. Send one above.</p>
+              <% } %>
+            </div>
+          </div>
         </div>
-
-        <% } %> <% } %>
       </div>
-    </div>
+    </section>
   </body>
 </html>

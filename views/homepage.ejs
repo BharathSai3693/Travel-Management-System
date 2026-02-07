@@ -5,13 +5,158 @@
   include('partials/headersignout.ejs')%> <%}%>
 
   <body>
-    <div class="text-center bg-info p-4">
-      <h1 class="text-light">BOOK MY TRIP</h1>
-    </div>
+    <section class="tms-hero" style="--hero-image: url('/images/homepage.jpg')">
+      <div class="container tms-hero-content">
+        <div class="row align-items-center">
+          <div class="col-lg-6 fade-up">
+            <p class="tms-pill d-inline-block mb-3">
+              Travel management, reimagined
+            </p>
+            <h1 class="display-4 mb-3">Plan, book, and manage trips in one place</h1>
+            <p class="lead mb-4">
+              Discover curated packages, manage bookings, and keep every detail
+              organized with a dashboard built for modern travelers.
+            </p>
+            <% if(user_id){ %>
+            <div class="d-flex flex-wrap">
+              <a class="btn tms-btn mr-2 mb-2" href="/packages">Browse packages</a>
+              <a class="btn tms-btn-outline mb-2" href="/tourhistory"
+                >Tour history</a
+              >
+            </div>
+            <% } else { %>
+            <div class="d-flex flex-wrap">
+              <a class="btn tms-btn mr-2 mb-2" href="/register">Create account</a>
+              <a class="btn tms-btn-outline mb-2" href="/login">Sign in</a>
+            </div>
+            <% } %>
+          </div>
 
-    <div>
-      <img class="img-fluid w-100" src="./images/homepage.jpg" alt="" />
-    </div>
+          <div class="col-lg-5 offset-lg-1 mt-4 mt-lg-0 fade-up">
+            <div class="tms-hero-card">
+              <h4 class="mb-3">Why travelers love Book My Trip</h4>
+              <div class="mb-3">
+                <strong>Smart packages</strong>
+                <p class="text-muted mb-0">
+                  Personalized suggestions that match your travel style.
+                </p>
+              </div>
+              <div class="mb-3">
+                <strong>Clear booking flow</strong>
+                <p class="text-muted mb-0">
+                  Track bookings, payments, and updates in one place.
+                </p>
+              </div>
+              <div>
+                <strong>Trusted support</strong>
+                <p class="text-muted mb-0">
+                  Enquiries and assistance, always within reach.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <% if(user_id){ %>
+    <section class="tms-section">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+          <div>
+            <h2 class="mb-1">Your dashboard</h2>
+            <p class="text-muted mb-0">Jump back into planning your next trip.</p>
+          </div>
+        </div>
+        <div class="tms-grid stagger">
+          <a href="/packages" class="tms-tile">
+            <div class="tms-tile-content">
+              <img
+                src="./images/travel.png"
+                alt="Packages"
+                class="tms-tile-icon"
+              />
+              <h5>Packages</h5>
+              <p class="text-muted mb-0">Browse curated trips</p>
+            </div>
+          </a>
+
+          <a href="/tourhistory" class="tms-tile">
+            <div class="tms-tile-content">
+              <img
+                src="./images/report.png"
+                alt="Tour history"
+                class="tms-tile-icon"
+              />
+              <h5>Tour History</h5>
+              <p class="text-muted mb-0">View previous bookings</p>
+            </div>
+          </a>
+
+          <a href="/enquiry" class="tms-tile">
+            <div class="tms-tile-content">
+              <img
+                src="./images/team.png"
+                alt="Enquiry"
+                class="tms-tile-icon"
+              />
+              <h5>Enquiry</h5>
+              <p class="text-muted mb-0">Support & updates</p>
+            </div>
+          </a>
+
+          <a href="/popular" class="tms-tile">
+            <div class="tms-tile-content">
+              <img
+                src="./images/booking.png"
+                alt="Popular"
+                class="tms-tile-icon"
+              />
+              <h5>Popular</h5>
+              <p class="text-muted mb-0">Trending destinations</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+    <% } else { %>
+    <section class="tms-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-3">
+            <div class="tms-tile">
+              <div class="tms-tile-content">
+                <h5>Curated packages</h5>
+                <p class="text-muted mb-0">
+                  Explore flexible trips for every travel mood.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-3">
+            <div class="tms-tile">
+              <div class="tms-tile-content">
+                <h5>Secure payments</h5>
+                <p class="text-muted mb-0">
+                  Pay with confidence and track every transaction.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-3">
+            <div class="tms-tile">
+              <div class="tms-tile-content">
+                <h5>Always in control</h5>
+                <p class="text-muted mb-0">
+                  Manage enquiries and bookings from a single dashboard.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <% } %>
 
     <!-- <a href="/packages"> Packages</a> -->
   </body>
