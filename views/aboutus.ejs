@@ -1,62 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include("./partials/head.ejs") %> <%-
-  include("./partials/headersignout.ejs") %>
-  <body>
-    <div class="container bg-info">
-      <div class="row">
-        <div class="col-6">
-          <img
-            src="https://img.buzzfeed.com/buzzfeed-static/static/2015-04/22/13/campaign_images/webdr05/24-of-the-most-beautiful-quotes-about-nature-2-20983-1429722037-8_dblbig.jpg?resize=1200:*"
-            alt=""
-            class="w-100"
-            height="500px"
-          />
+  <%- include("./partials/head.ejs") %> <%- include("./partials/headersignout.ejs") %>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Get in touch</p>
+            <h1 class="mb-1">About Us</h1>
+            <p class="text-muted mb-0">
+              We help travelers discover, book, and manage memorable journeys.
+            </p>
+          </div>
+          <a class="btn tms-btn-outline mt-3 mt-lg-0" href="/packages">
+            Explore packages
+          </a>
         </div>
-        <div class="col-6 p-3 bg-info">
-          <div class="card" style="width: 530px">
-            <div class="card-body bg-light">
-              <h5 class="card-title text-center">CONTACT US AT</h5>
-              <div class="card-text bg-info p-3 rounded shadow-lg">
-                <b> Telephone : </b>
-                <p>+91 9000011111 <br />+91 9000011112</p>
+      </div>
+    </section>
+
+    <section class="tms-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="tms-about-media">
+              <img
+                src="https://img.buzzfeed.com/buzzfeed-static/static/2015-04/22/13/campaign_images/webdr05/24-of-the-most-beautiful-quotes-about-nature-2-20983-1429722037-8_dblbig.jpg?resize=1200:*"
+                alt="Travel inspiration"
+              />
+            </div>
+          </div>
+          <div class="col-lg-6 mb-4">
+            <div class="tms-card">
+              <h4 class="mb-3">Contact</h4>
+              <div class="tms-contact-item">
+                <span class="text-muted">Telephone</span>
+                <h5 class="mb-0">+1 7162756617</h5>
               </div>
-              <br />
-              <div class="bg-info p-3 rounded shadow-lg">
-                <b> Email us at : </b>
-                <p>Admin1@Huss.com</p>
-                <p>Admin2@Huss.com</p>
+              <div class="tms-contact-item">
+                <span class="text-muted">Email</span>
+                <h5 class="mb-0">saibharath3693@gmail.com</h5>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="contact bg-dark p-3 rounded row">
-        <div class="aboutus bg-info p-3 shadow-lg rounded">
-          <h4 class="text-warning text-center">About us</h4>
-          <p class="">
+        <div class="tms-card">
+          <h4 class="mb-2">Our story</h4>
+          <p class="text-muted mb-0">
             Nurtured from the seed of a single great idea - to empower the
-            traveller - HUSS is a pioneer in India’s online travel industry.
-            Founded in the year 2021 by group of graduates, HUSS came to life to
-            empower the Indian traveller with instant bookings and comprehensive
-            choices. The company initiated its journey serving the US-India
-            travel market offering a range of best-value products and services
-            powered by technology and round-the-clock customer support. After
-            consolidating its position in the market as a brand recognised for
-            its position. Nurtured from the seed of a single great idea - to
-            empower the traveller - HUSS is a pioneer in India’s online travel
-            industry. Founded in the year 2021 by group of graduates, HUSS came
-            to life to empower the Indian traveller with instant bookings and
-            comprehensive choices. The company initiated its journey serving the
-            US-India travel market offering a range of best-value products and
-            services powered by technology and round-the-clock customer support.
-            After consolidating its position in the market as a brand recognised
-            for its position.
+            traveler - this platform brings curated packages, instant bookings,
+            and a smooth support experience together. Our mission is to make
+            planning travel simple and transparent while keeping every detail
+            organized in one place.
           </p>
         </div>
       </div>
-    </div>
+    </section>
 
     <%- include("./partials/footer.ejs") %>
   </body>

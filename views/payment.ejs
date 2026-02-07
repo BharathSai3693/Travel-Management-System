@@ -2,310 +2,138 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %> <%- include("./partials/header.ejs") %>
 
-  <body>
-    <div class="container p-3">
-      <div class="row">
-        <div class="col-6">
-          <div class="container" style="padding: 50px">
-            <div class="invoice-container" ref="document" id="html">
-              <table
-                style="width: 100%; height: auto; text-align: center"
-                BORDER="0"
-                CELLSPACING="0"
-              >
-                <thead style="background: #fafafa; padding: 8px">
-                  <tr style="font-size: 20px">
-                    <td
-                      colspan="4"
-                      style="padding: 20px 20px; text-align: left"
-                    >
-                      MAKE MY TOUR
-                    </td>
-                  </tr>
-                </thead>
-                <tbody style="background: #ffff; padding: 20px">
-                  <tr>
-                    <td
-                      colspan="4"
-                      style="
-                        padding: 20px 0px 0px 20px;
-                        text-align: left;
-                        font-size: 16px;
-                        font-weight: bold;
-                        color: #000;
-                      "
-                    >
-                      Hello, <%= name %>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      colspan="4"
-                      style="
-                        text-align: left;
-                        padding: 10px 10px 10px 20px;
-                        font-size: 14px;
-                      "
-                    >
-                      Your order details
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Secure checkout</p>
+            <h1 class="mb-1">Payment</h1>
+            <p class="text-muted mb-0">Review your invoice and complete payment.</p>
+          </div>
+          <a class="btn tms-btn-outline mt-3 mt-lg-0" href="/packages">
+            Continue browsing
+          </a>
+        </div>
+      </div>
+    </section>
 
-              <!-- order date, Order No, Payment -->
-              <table
-                style="
-                  width: 100%;
-                  height: auto;
-                  background-color: #fff;
-                  text-align: center;
-                  padding: 10px;
-                  background: #fafafa;
-                "
-              >
-                <tbody>
-                  <tr style="color: #6c757d; font-size: 20px">
-                    <td
-                      style="
-                        border-right: 1.5px dashed #dcdcdc;
-                        width: 25%;
-                        font-size: 12px;
-                        font-weight: 700;
-                        padding: 0px 0px 10px 0px;
-                      "
-                    >
-                      Order Date
-                    </td>
-                    <td
-                      style="
-                        border-right: 1.5px dashed #dcdcdc;
-                        width: 25%;
-                        font-size: 12px;
-                        font-weight: 700;
-                        padding: 0px 0px 10px 0px;
-                      "
-                    >
-                      Order No.
-                    </td>
-                    <td
-                      style="
-                        border-right: 1.5px dashed #dcdcdc;
-                        width: 25%;
-                        font-size: 12px;
-                        font-weight: 700;
-                        padding: 0px 0px 10px 0px;
-                      "
-                    >
-                      Payment
-                    </td>
-                  </tr>
-                  <tr
-                    style="
-                      background-color: #fff;
-                      font-size: 12px;
-                      color: #262626;
-                    "
-                  >
-                    <td
-                      style="
-                        border-right: 1.5px dashed #dcdcdc;
-                        width: 25%;
-                        font-weight: bold;
-                        background: #fafafa;
-                      "
-                    >
-                      <% const yourDate = new Date() %> <%=
-                      yourDate.toISOString().split('T')[0] %>
-                    </td>
-                    <td
-                      style="
-                        border-right: 1.5px dashed #dcdcdc;
-                        width: 25%;
-                        font-weight: bold;
-                        background: #fafafa;
-                      "
-                    >
-                      000000001
-                    </td>
-                    <td
-                      style="
-                        border-right: 1.5px dashed #dcdcdc;
-                        width: 25%;
-                        font-weight: bold;
-                        background: #fafafa;
-                      "
-                    >
-                      DEBIT CARD
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+    <section class="tms-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="tms-invoice">
+              <div class="tms-invoice-header">
+                <div>
+                  <h4 class="mb-1">Book My Trip</h4>
+                  <p class="text-muted mb-0">Invoice summary</p>
+                </div>
+                <span class="tms-pill">Order #000000001</span>
+              </div>
 
-              <table
-                style="
-                  width: 100%;
-                  height: auto;
-                  background-color: #fff;
-                  margin-top: 0px;
-                  padding: 20px;
-                  font-size: 12px;
-                  border: 1px solid #ebebeb;
-                  border-top: 0px;
-                "
-              >
-                <thead>
-                  <tr style="color: #6c757d; font-weight: bold; padding: 5px">
-                    <td colspan="2" style="text-align: left">
-                      PACKAGE INFORMATION
-                    </td>
-                    <td colspan="2" style="text-align: right; padding: 10px">
-                      PRICE
-                    </td>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td style="width: 10%" colspan="2">Food</td>
-                    <td
-                      style="width: 20%; margin-left: 10px; text-align: right"
-                      colspan="2"
-                    >
-                      <%= (total*20)/100 %>/-
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width: 10%" colspan="2">Accomodation</td>
-                    <td
-                      style="width: 20%; margin-left: 10px; text-align: right"
-                      colspan="2"
-                    >
-                      <%= (total*25)/100 %>/-
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="width: 10%" colspan="2">Travel</td>
-                    <td
-                      style="width: 20%; margin-left: 10px; text-align: right"
-                      colspan="2"
-                    >
-                      <%= (total*15)/100 %>/-
-                    </td>
-                  </tr>
+              <div class="tms-invoice-body">
+                <p class="mb-1"><strong>Hello, <%= name %></strong></p>
+                <p class="text-muted mb-3">Your order details</p>
 
-                  <tr>
-                    <td style="width: 10%" colspan="2">Activities</td>
-                    <td
-                      style="width: 20%; margin-left: 10px; text-align: right"
-                      colspan="2"
-                    >
-                      <%= (total*30)/100 %>/-
-                    </td>
-                  </tr>
+                <div class="tms-invoice-meta">
+                  <div>
+                    <span class="text-muted">Order Date</span>
+                    <h6 class="mb-0">
+                      <% const yourDate = new Date() %>
+                      <%= yourDate.toISOString().split('T')[0] %>
+                    </h6>
+                  </div>
+                  <div>
+                    <span class="text-muted">Payment</span>
+                    <h6 class="mb-0">Debit Card</h6>
+                  </div>
+                </div>
 
-                  <tr>
-                    <td style="width: 10%" colspan="2">GST + Taxes</td>
-                    <td
-                      style="width: 20%; margin-left: 10px; text-align: right"
-                      colspan="2"
-                    >
-                      <%= (total*10)/100 %>/-
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table
-                style="
-                  width: 100%;
-                  height: auto;
-                  background-color: #fff;
-                  padding: 20px;
-                  font-size: 12px;
-                  border: 1px solid #ebebeb;
-                  border-top: 0;
-                "
-              >
-                <tbody>
-                  <tr style="padding: 20px; color: #000; font-size: 15px">
-                    <td style="font-weight: bold; padding: 5px 0px">Total</td>
-                    <td
-                      style="
-                        text-align: right;
-                        padding: 5px 0px;
-                        font-weight: bold;
-                        font-size: 16px;
-                      "
-                    >
-                      <%= total %>/-
-                    </td>
-                  </tr>
+                <div class="tms-invoice-line">
+                  <div>Food</div>
+                  <div>₹<%= (total*20)/100 %></div>
+                </div>
+                <div class="tms-invoice-line">
+                  <div>Accommodation</div>
+                  <div>₹<%= (total*25)/100 %></div>
+                </div>
+                <div class="tms-invoice-line">
+                  <div>Travel</div>
+                  <div>₹<%= (total*15)/100 %></div>
+                </div>
+                <div class="tms-invoice-line">
+                  <div>Activities</div>
+                  <div>₹<%= (total*30)/100 %></div>
+                </div>
+                <div class="tms-invoice-line">
+                  <div>GST + Taxes</div>
+                  <div>₹<%= (total*10)/100 %></div>
+                </div>
 
-                  <tr>
-                    <td colspan="2" style="font-weight: bold">
-                      <span style="color: #c61932; font-weight: bold"
-                        >THANK YOU</span
-                      >
-                      for choosing us!!!
-                    </td>
-                  </tr>
-                  <tr>
-                    <td
-                      colspan="2"
-                      style="
-                        font-weight: bold;
-                        text-align: left;
-                        padding: 5px 0px 0px 00px;
-                        font-size: 14px;
-                      "
-                    >
-                      Make My Tour<span></span> team
-                    </td>
-                  </tr>
-                </tbody>
-                <tfoot style="padding-top: 20px; font-weight: bold">
-                  <tr>
-                    <td style="padding-top: 20px">
-                      <a href="/enquiry"> Need help?</a> Contact us
-                      <span style="color: #c61932"> makemytour@admin.com </span>
-                    </td>
-                  </tr>
-                </tfoot>
-              </table>
+                <div class="tms-invoice-total">
+                  <div>Total</div>
+                  <div>₹<%= total %></div>
+                </div>
+
+                <p class="text-muted mt-3 mb-0">
+                  Thank you for choosing Book My Trip. Need help?
+                  <a href="/enquiry">Contact us</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4">
+            <div class="tms-card">
+              <h4 class="mb-3">Card details</h4>
+              <form action="/bookingsuccess" method="get">
+                <div class="form-group">
+                  <label>Card number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="1234 5678 9012 3456"
+                  />
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Expiry</label>
+                      <input
+                        type="month"
+                        class="form-control"
+                        placeholder="MM/YYYY"
+                      />
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label>CVV</label>
+                      <input type="password" class="form-control" placeholder="CVV" />
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Name on card</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Name on the card"
+                  />
+                </div>
+
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                  <span class="text-muted">Total payment</span>
+                  <h5 class="mb-0">₹<%= total %></h5>
+                </div>
+                <button type="submit" class="btn tms-btn w-100">
+                  Make payment
+                </button>
+              </form>
             </div>
           </div>
         </div>
-        <div class="col-6">
-          <h2 class="text-center">Payment</h2>
-
-          <form action="/bookingsuccess" method="get">
-            <input
-              type="text"
-              class="form-control my-4"
-              placeholder="CARD NUMBER"
-            />
-            <div class="row my-4">
-              <div class="col">
-                <input
-                  type="month"
-                  class="form-control"
-                  placeholder="MONTH, YEAR"
-                />
-              </div>
-              <div class="col">
-                <input type="password" class="form-control" placeholder="CVV" />
-              </div>
-            </div>
-            <input
-              type="text"
-              class="form-control my-4"
-              placeholder="NAME ON THE CARD"
-            />
-
-            <h3>Total Payment : <%= total%></h3>
-            <button type="submit" class="btn btn-primary">Make Payment</button>
-          </form>
-        </div>
       </div>
-    </div>
+    </section>
   </body>
 </html>

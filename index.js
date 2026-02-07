@@ -16,8 +16,10 @@ const Booking = require("./models/booking");
 const Enquiry = require("./models/enquiry");
 
 //const booking
+const dbUrl = process.env.MONGODB_URI || "mongodb://localhost:27017/tms";
+
 mongoose
-  .connect("mongodb://localhost:27017/tms", {
+  .connect(dbUrl, {
     // test is the name of the database
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -44,7 +46,7 @@ app.use(morgan("tiny")); //#middleware to maintain logs no need for our project
 app.use(cookieParser("thisismysecret"));
 app.use(
   session({
-    secret: "thisisnotagoodsecret",
+    secret: process.env.SESSION_SECRET || "thisisnotagoodsecret",
     resave: false,
     saveUninitialized: false,
   })
@@ -405,8 +407,9 @@ app.get("/userpackages/:id", async (req, res) => {
 app.get("/booking/:id", requireUserLogin, async (req, res) => {
   const { id } = req.params;
   const username = req.session.username;
+  const user = await User.findById(req.session.user_id);
   const package = await Package.findById(id);
-  res.render("booking.ejs", { p: package, name: username });
+  res.render("booking.ejs", { p: package, name: username, user });
 });
 
 app.post("/booking/:id", requireUserLogin, async (req, res) => {
@@ -536,6 +539,7 @@ app.use((req, res) => {
   res.send("NOT FOUND!!");
 });
 
-app.listen(3000, () => {
-  console.log("Serving Port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Serving Port ${PORT}`);
 });

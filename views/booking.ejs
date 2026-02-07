@@ -2,100 +2,117 @@
 <html lang="en">
   <%- include("./partials/head.ejs") %> <%- include("./partials/header.ejs") %>
 
-  <body
-    style="
-      background-image: url('https://cdn.wallpapersafari.com/47/46/RWFb2z.jpg');
-      background-size: cover;
-    "
-  >
-    <div class="container p-3">
-      <div class="row">
-        <div class="col">
-          <div class="card w-100" style="width: 25rem">
-            <img src="<%= p.packageImage %> " class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title"><%= p.packageName %></h5>
-              <p class="card-text">
-                <b>Package Type : </b> <%= p.packageType %>
-              </p>
-              <p class="card-text">
-                <b>Package Location : </b><%= p.packageLocation %>
-              </p>
-              <p class="card-text">
-                <b>Package Price : </b><%= p.packagePrice %>
-              </p>
-              <p class="card-text"><b>Number of Days : </b><%= p.days %></p>
-              <p class="card-text">
-                <b>Start Date : </b><%=
-                p.startDate.toUTCString().substring(0,16) %>
-              </p>
+  <body class="tms-page">
+    <section class="tms-page-header">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-between">
+          <div>
+            <p class="tms-pill d-inline-block mb-2">Secure booking</p>
+            <h1 class="mb-1">Book Your Trip</h1>
+            <p class="text-muted mb-0">
+              Review the package and confirm your booking details.
+            </p>
+          </div>
+          <a class="btn tms-btn-outline mt-3 mt-lg-0" href="/userpackages/<%= p._id %>">
+            Back to package
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="tms-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <div class="tms-package-card">
+              <div class="tms-package-media">
+                <img src="<%= p.packageImage %>" alt="<%= p.packageName %>" />
+              </div>
+              <div class="tms-package-body">
+                <h4 class="mb-2"><%= p.packageName %></h4>
+                <p class="text-muted mb-3">
+                  <%= p.packageType %> • <%= p.packageLocation %>
+                </p>
+                <div class="tms-package-meta">
+                  <span><strong>Price:</strong> ₹<%= p.packagePrice %></span>
+                  <span><strong>Days:</strong> <%= p.days %></span>
+                  <span
+                    ><strong>Start Date:</strong>
+                    <%= p.startDate.toUTCString().substring(0,16) %></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4">
+            <div class="tms-card">
+              <h4 class="mb-3">Traveler details</h4>
+              <form
+                name="detailsForm"
+                action="/booking/<%=p._id%>"
+                method="post"
+                id="bookpackage"
+                onsubmit="return Validate()"
+              >
+                <div class="form-group">
+                  <label>Email address</label>
+                  <input
+                    type="email"
+                    name="bookingMail"
+                    class="form-control"
+                    value="<%= user ? user.email : '' %>"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Mobile Number</label>
+                  <input
+                    type="tel"
+                    name="bookingMobile"
+                    class="form-control"
+                    value="<%= user ? user.mobile : '' %>"
+                    required
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Special Remarks</label>
+                  <input
+                    type="text"
+                    name="bookingRemarks"
+                    class="form-control"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label>Number of Passengers</label>
+                  <input
+                    type="number"
+                    name="passengers"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <button
+                  type="button"
+                  class="btn tms-btn w-100"
+                  data-toggle="modal"
+                  data-target="#exampleModal"
+                >
+                  Book Package
+                </button>
+              </form>
             </div>
           </div>
         </div>
-        <div class="col bg-info">
-          <h2 class="text-center text-light">Details</h2>
-          <form
-            name="detailsForm"
-            action="/booking/<%=p._id%>"
-            method="post"
-            id="bookpackage"
-            onsubmit="return Validate()"
-          >
-            <div class="mb-3">
-              <label class="form-label">Email address</label>
-              <input
-                type="email"
-                name="bookingMail"
-                class="form-control"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Mobile Number</label>
-              <input
-                type="tel"
-                name="bookingMobile"
-                class="form-control"
-                required
-              />
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Special Remarks</label>
-              <input
-                type="text"
-                name="bookingRemarks"
-                class="form-control"
-                required
-              />
-            </div>
-
-            <div class="mb-3">
-              <label class="form-label">Number of Passengers</label>
-              <input
-                type="number"
-                name="passengers"
-                class="form-control"
-                required
-              />
-            </div>
-            <button
-              type="button"
-              class="btn btn-primary"
-              data-toggle="modal"
-              data-target="#exampleModal"
-            >
-              Book Package
-            </button>
-            <!-- <button type="submit" class="btn btn-primary">Book Package</button> -->
-          </form>
-        </div>
       </div>
-    </div>
+    </section>
   </body>
 
   <!-- modal -->
   <div
-    class="modal fade"
+    class="modal fade tms-modal"
     id="exampleModal"
     tabindex="-1"
     role="dialog"
@@ -117,11 +134,11 @@
         </div>
         <div class="modal-body">Are you sure want to book this package?</div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          <button type="button" class="btn tms-btn-outline" data-dismiss="modal">
             Close
           </button>
 
-          <button type="button" onclick="bookpackage()" class="btn btn-primary">
+          <button type="button" onclick="bookpackage()" class="btn tms-btn">
             Book Package
           </button>
         </div>
@@ -130,7 +147,7 @@
   </div>
 
   <!-- validation modals -->
-  <div class="modal fade" id="mobileError" role="dialog" aria-hidden="true">
+  <div class="modal fade tms-modal" id="mobileError" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content bg-danger">
         <div class="modal-header">
@@ -150,7 +167,7 @@
     </div>
   </div>
 
-  <div class="modal fade" id="emailError" role="dialog" aria-hidden="true">
+  <div class="modal fade tms-modal" id="emailError" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content bg-danger">
         <div class="modal-header">
@@ -181,7 +198,6 @@
       if (x == "" || y == "" || z == "") {
         alert("Fill all the Details");
       } else if (!emailRegex.test(x)) {
-        // alert("Email not in format");
         $("#emailError").modal();
       } else if (!mobileRegex.test(y)) {
         $("#mobileError").modal();
